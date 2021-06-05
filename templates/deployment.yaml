@@ -1,0 +1,82 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Release.Name }}-kafka-consumer
+spec:
+  strategy:
+    rollingUpdate:
+      maxUnavailable: 0
+  replicas: {{ .Values.replicaCount }}
+  selector:
+      matchLabels:
+        app: {{ .Release.Name }}-kafka-consumer
+  template:
+    metadata:
+      labels:
+        app: {{ .Release.Name }}-kafka-consumer
+      annotations:
+        prometheus.io/path: {{ .Values.metrics.path }}
+        prometheus.io/port: {{ .Values.port | quote }}
+        prometheus.io/scrape: {{ .Values.metrics.enabled | quote }}        
+    spec:
+      serviceAccountName: {{ .Values.serviceAccountName }}
+      containers:
+        - name: kafka-consumer
+          image: {{ .Values.image }}
+          volumeMounts:
+            - name: kafka-secrets-volume
+              mountPath: /secrets-files
+          ports:
+            - containerPort: {{ .Values.port }}
+          env:
+            - name: KAFKA_BROKER
+              value: {{ .Values.broker }}
+            - name: GROUP_ID
+              value: {{ .Values.groupId }}
+            - name: TOPICS
+              value: {{ .Values.topics }}                
+            {{- if .Values.retry  }}
+            - name: RETRY_TOPIC
+              value: {{ .Values.retry.topic | default (printf "%s-retry" .Values.groupId) }}
+            {{- end }}
+            {{- if .Values.deadLetter }}
+            - name: DEAD_LETTER_TOPIC
+              value: {{ .Values.deadLetter.topic | default (printf "%s-dead-letter" .Values.groupId) }}
+            {{- end }}
+            - name: PROCESSING_DELAY
+              value: {{ .Values.target.processingDelay | default "0" | squote}}
+            - name: SENDING_PROTOCOL
+              value: {{ .Values.target.protocol }}
+            - name: TARGET
+              value: {{ .Values.target.endpoint }}        
+            - name: TARGET_IS_ALIVE_HTTP_ENDPOINT
+              value: {{ .Values.target.isAlive }}
+            - name: USE_PROMETHEUS
+              value: {{ .Values.usePrometheus | squote }}
+            - name: MONITORING_SERVER_PORT
+              value: {{ .Values.port | squote }}        
+            - name: SECURITY_PROTOCOL
+              value: SASL_SSL
+            - name: SASL_USERNAME
+              value: {{ .Values.auth.saslUsername }}
+            - name: SASL_PASSWORD_FILE_PATH
+              value: {{ .Values.auth.saslPasswordFilePath }}
+            {{- if and (.Values.auth.truststoreFilePath) (.Values.auth.truststorePasswordFilePath) }}
+            - name: BASE64_TRUSTSTORE_FILE_PATH
+              value: {{ .Values.auth.truststoreFilePath | squote }} 
+            - name: TRUSTSTORE_PASSWORD_FILE_PATH
+              value: {{ .Values.auth.truststorePasswordFilePath | squote }} 
+            {{- end }}
+          livenessProbe:
+{{ toYaml .Values.livenessProbe | indent 12 }}
+          readinessProbe:
+{{ toYaml .Values.readinessProbe | indent 12 }}
+          resources:
+{{ toYaml .Values.resources | indent 12 }}
+      volumes:
+        - name: kafka-secrets-volume
+          csi:
+            driver: secrets-store.csi.k8s.io
+            readOnly: true
+            volumeAttributes:
+              secretProviderClass: {{ .Release.Name }}-kafka-consumer
