@@ -4,11 +4,6 @@ replicaCount: 2
 image: osskit/dafka-consumer:1.0.0
 usePrometheus: true
 
-secretProvider: gcp
-secret:
-  resourceName: projects/fabric-global-test/secrets/confluent-sasl-password/versions/latest
-  fileName: SASL_PASSWORD
-
 livenessProbe:
   httpGet:
     path: /isAlive
