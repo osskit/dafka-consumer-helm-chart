@@ -50,7 +50,7 @@ spec:
             - name: TARGET
               value: {{ .Values.target.baseUrl | default .Release.Name }}{{ .Values.target.endpoint }}
             - name: TARGET_IS_ALIVE_HTTP_ENDPOINT
-              value: {{ .Values.target.isAlive | default (printf "%s/isAlive" .Release.Name) }}
+              value: {{ .Values.target.isAlive | default (printf "http://%s/isAlive" .Release.Name) }}
             - name: USE_PROMETHEUS
               value: {{ .Values.usePrometheus | squote }}
             - name: MONITORING_SERVER_PORT
