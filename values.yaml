@@ -15,7 +15,9 @@ auth:
 
 target:
   protocol: http
-  port: '3000'
+  baseUrl:
+  port: 3000
+  isAlive: /isAlive
 
 livenessProbe:
   httpGet:
