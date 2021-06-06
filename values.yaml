@@ -15,6 +15,7 @@ auth:
 
 target:
   protocol: http
+  port: 3000
 
 livenessProbe:
   httpGet:
