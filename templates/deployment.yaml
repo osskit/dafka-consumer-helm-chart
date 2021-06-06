@@ -32,25 +32,25 @@ spec:
             - name: KAFKA_BROKER
               value: {{ .Values.broker }}
             - name: GROUP_ID
-              value: {{ .Values.groupId }}
+              value: {{ .Values.groupId | default .Release.Name }}
             - name: TOPICS
               value: {{ .Values.topics }}                
             {{- if .Values.retry  }}
             - name: RETRY_TOPIC
-              value: {{ .Values.retry.topic | default (printf "%s-retry" .Values.groupId) }}
+              value: {{ .Values.retry.topic | default (printf "%s-retry" .Release.Name) }}
             {{- end }}
             {{- if .Values.deadLetter }}
             - name: DEAD_LETTER_TOPIC
-              value: {{ .Values.deadLetter.topic | default (printf "%s-dead-letter" .Values.groupId) }}
+              value: {{ .Values.deadLetter.topic | default (printf "%s-dead-letter" .Release.Name) }}
             {{- end }}
             - name: PROCESSING_DELAY
               value: {{ .Values.target.processingDelay | default "0" | squote}}
             - name: SENDING_PROTOCOL
               value: {{ .Values.target.protocol }}
             - name: TARGET
-              value: {{ .Values.target.endpoint }}        
+              value: {{ .Values.target.baseUrl | default .Release.Name }}{{ .Values.target.endpoint }}
             - name: TARGET_IS_ALIVE_HTTP_ENDPOINT
-              value: {{ .Values.target.isAlive }}
+              value: {{ .Values.target.isAlive | default (printf "%s/isAlive" .Release.Name) }}
             - name: USE_PROMETHEUS
               value: {{ .Values.usePrometheus | squote }}
             - name: MONITORING_SERVER_PORT

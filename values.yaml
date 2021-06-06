@@ -4,6 +4,18 @@ replicaCount: 2
 image: osskit/dafka-consumer:1.0.0
 usePrometheus: true
 
+secret:
+  provider:
+  resourceName:
+  fileName:
+
+auth:
+  saslUsername:
+  saslPasswordFilePath: /secrets-files/SASL_PASSWORD  
+
+target:
+  protocol: http
+
 livenessProbe:
   httpGet:
     path: /isAlive
