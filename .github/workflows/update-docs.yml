@@ -6,6 +6,7 @@ on:
       - '.github/**'
       - 'README.md'
     branches: [main]
+  workflow_dispatch:
 
 jobs:
   update-docs:
