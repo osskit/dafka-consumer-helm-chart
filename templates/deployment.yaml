@@ -45,12 +45,10 @@ spec:
             {{- end }}
             - name: PROCESSING_DELAY
               value: {{ .Values.target.processingDelay | default "0" | squote}}
-            - name: SENDING_PROTOCOL
-              value: {{ .Values.target.protocol }}
             - name: TARGET
-              value: {{ .Values.target.baseUrl | default .Release.Name }}:{{ .Values.target.port }}{{ .Values.target.endpoint }}
+              value: {{ .Values.target.baseUrl | default (printf "http://%s" .Release.Name) }}:{{ .Values.target.port }}{{ .Values.target.endpoint }}
             - name: TARGET_IS_ALIVE_HTTP_ENDPOINT
-              value: http://{{ .Values.target.baseUrl | default .Release.Name }}:{{ .Values.target.port }}{{ .Values.target.isAlive }}
+              value: {{ .Values.target.baseUrl | default (printf "http://%s" .Release.Name) }}:{{ .Values.target.port }}{{ .Values.target.isAlive }}
             - name: USE_PROMETHEUS
               value: {{ .Values.usePrometheus | squote }}
             - name: MONITORING_SERVER_PORT
