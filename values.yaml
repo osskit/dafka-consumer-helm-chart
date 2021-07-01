@@ -16,6 +16,7 @@ auth:
 target:
   baseUrl:
   port: 80
+  endpoint:
   isAlive: /isAlive
 
 livenessProbe:
