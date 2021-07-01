@@ -20,6 +20,7 @@ A Helm Chart for Dafka Consumer
 | auth.saslPasswordFilePath | string | `"/secrets-files/SASL_PASSWORD"` |  |
 | target.baseUrl | string | `nil` |  |
 | target.port | int | `80` |  |
+| target.endpoint | string | `nil` |  |
 | target.isAlive | string | `"/isAlive"` |  |
 | livenessProbe.httpGet.path | string | `"/isAlive"` |  |
 | livenessProbe.httpGet.port | int | `3000` |  |
