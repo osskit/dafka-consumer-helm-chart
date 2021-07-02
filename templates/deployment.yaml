@@ -47,7 +47,7 @@ spec:
               value: {{ .Values.target.processingDelay | default "0" | squote}}
             - name: TARGET
               value: {{ .Values.target.baseUrl | default (printf "http://%s" .Release.Name) }}:{{ .Values.target.port }}{{ .Values.target.endpoint }}
-            - name: TARGET_IS_ALIVE_HTTP_ENDPOINT
+            - name: TARGET_IS_ALIVE_ROUTE
               value: {{ .Values.target.baseUrl | default (printf "http://%s" .Release.Name) }}:{{ .Values.target.port }}{{ .Values.target.isAlive }}
             - name: USE_PROMETHEUS
               value: {{ .Values.usePrometheus | squote }}
