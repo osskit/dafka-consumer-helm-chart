@@ -57,13 +57,19 @@ spec:
               value: SASL_SSL
             - name: SASL_USERNAME
               value: {{ .Values.auth.saslUsername }}
-            - name: SASL_PASSWORD_FILE_PATH
-              value: {{ .Values.auth.saslPasswordFilePath }}
-            {{- if and (.Values.auth.truststoreFilePath) (.Values.auth.truststorePasswordFilePath) }}
-            - name: BASE64_TRUSTSTORE_FILE_PATH
-              value: {{ .Values.auth.truststoreFilePath | squote }} 
-            - name: TRUSTSTORE_PASSWORD_FILE_PATH
-              value: {{ .Values.auth.truststorePasswordFilePath | squote }} 
+            - name: SASL_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: saslPassword
+                  key: saslPassword
+            {{- if .Values.auth.trustsotre }}
+            - name: TRUSTSTORE_FILE_PATH
+              value: /secrets-files/truststore
+            - name: TRUSTSTORE_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: truststorePassword
+                  key: truststorePassword            
             {{- end }}
           livenessProbe:
 {{ toYaml .Values.livenessProbe | indent 12 }}

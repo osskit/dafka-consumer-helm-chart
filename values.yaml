@@ -11,7 +11,7 @@ secret:
 
 auth:
   saslUsername:
-  saslPasswordFilePath: /secrets-files/SASL_PASSWORD  
+  saslPasswordResource:
 
 target:
   baseUrl:
