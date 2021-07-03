@@ -53,8 +53,8 @@ spec:
               value: {{ .Values.usePrometheus | squote }}
             - name: MONITORING_SERVER_PORT
               value: {{ .Values.port | squote }}        
-            - name: SECURITY_PROTOCOL
-              value: SASL_SSL
+            - name: USE_SASL_AUTH
+              value: 'true'
             - name: SASL_USERNAME
               value: {{ .Values.auth.saslUsername }}
             - name: SASL_PASSWORD
@@ -62,6 +62,8 @@ spec:
                 secretKeyRef:
                   name: saslPassword
                   key: saslPassword
+            - name: SASL_PASSWORD_FILE_PATH
+              value: {{ .Values.auth.saslPasswordFilePath }}                  
             {{- if .Values.auth.trustsotre }}
             - name: TRUSTSTORE_FILE_PATH
               value: /secrets-files/truststore
