@@ -76,10 +76,10 @@ spec:
                 secretKeyRef:
                   name: {{ .Release.Name }}-kafka-consumer
                   key: TRUSTSTORE_PASSWORD
-            {{- else }}                
+            {{- else }}
             - name: TRUSTSTORE_PASSWORD_FILE_PATH
               value: /secrets-files/TRUSTSTORE_PASSWORD                  
-            {{- end }}         
+            {{- end }}
             {{- end }}
           livenessProbe:
 {{ toYaml .Values.livenessProbe | indent 12 }}
