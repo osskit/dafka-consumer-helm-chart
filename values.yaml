@@ -1,17 +1,13 @@
 name: kafka-consumer
 port: &port 3000
 replicaCount: 2
-image: osskit/dafka-consumer:2.0.0
+image: osskit/dafka-consumer:2.0
 usePrometheus: true
-
-secret:
-  provider:
-  resourceName:
-  fileName:
 
 auth:
   saslUsername:
   saslPasswordResource:
+  useOpaqueSecrets: true  
 
 target:
   baseUrl:
