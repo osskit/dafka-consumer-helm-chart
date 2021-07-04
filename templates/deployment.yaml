@@ -57,13 +57,29 @@ spec:
               value: 'true'
             - name: SASL_USERNAME
               value: {{ .Values.auth.saslUsername }}
+            {{- if .Values.auth.useOpaqueSecrets}}
+            - name: SASL_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .Release.Name }}-kafka-consumer
+                  key: SASL_PASSWORD
+            {{- else }}
             - name: SASL_PASSWORD_FILE_PATH
-              value: {{ .Values.auth.saslPasswordFilePath }}
-            {{- if and (.Values.auth.truststoreFilePath) (.Values.auth.truststorePasswordFilePath) }}
+              value: /secrets-files/SASL_PASSWORD
+            {{- end }}
+            {{- if .Values.auth.truststore }}
             - name: TRUSTSTORE_FILE_PATH
-              value: {{ .Values.auth.truststoreFilePath | squote }} 
+              value: /secrets-files/truststore
+            {{- if .Values.auth.useOpaqueSecrets}}
+            - name: TRUSTSTORE_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .Release.Name }}-kafka-consumer
+                  key: TRUSTSTORE_PASSWORD
+            {{- else }}                
             - name: TRUSTSTORE_PASSWORD_FILE_PATH
-              value: {{ .Values.auth.truststorePasswordFilePath | squote }} 
+              value: /secrets-files/TRUSTSTORE_PASSWORD                  
+            {{- end }}         
             {{- end }}
           livenessProbe:
 {{ toYaml .Values.livenessProbe | indent 12 }}
