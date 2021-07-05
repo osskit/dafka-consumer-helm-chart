@@ -48,7 +48,7 @@ resources:
 
 metrics:
   # -- should prometheus scrape this server
-  : true
+  enabled: true
   # -- a path prometheus should scrape metrics from
   path: /metrics
 
