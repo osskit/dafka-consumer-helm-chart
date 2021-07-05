@@ -21,8 +21,8 @@ spec:
     spec:
       serviceAccountName: {{ .Values.serviceAccountName }}
       containers:
-        - name: kafka-consumer
-          image: {{ .Values.image }}
+        - name: {{ .Values.name }}
+          image: {{ .Values.image.name }}:{{ .Values.image.tag }}
           volumeMounts:
             - name: kafka-secrets-volume
               mountPath: /secrets-files
@@ -50,7 +50,7 @@ spec:
             - name: TARGET_IS_ALIVE_ROUTE
               value: {{ .Values.target.baseUrl | default (printf "http://%s" .Release.Name) }}:{{ .Values.target.port }}{{ .Values.target.isAlive }}
             - name: USE_PROMETHEUS
-              value: {{ .Values.usePrometheus | squote }}
+              value: {{ .Values.metrics.enabled | squote }}
             - name: MONITORING_SERVER_PORT
               value: {{ .Values.port | squote }}        
             - name: USE_SASL_AUTH

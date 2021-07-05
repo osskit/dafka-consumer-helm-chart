@@ -1,37 +1,66 @@
+# -- name for this consumer
 name: kafka-consumer
+
+# -- the port to use
 port: &port 3000
+
+# -- pod count
 replicaCount: 2
-image: osskit/dafka-consumer:2.0
-usePrometheus: true
 
-auth:
-  saslUsername:
-  saslPasswordResource:
-  useOpaqueSecrets: true  
-
+image: 
+  # -- the image name to use
+  name: osskit/dafka-consumer
+  # -- the image tag to use
+  tag: '2.0'
+  
 target:
+  # -- base url of target
   baseUrl:
+  # -- target port
   port: 80
+  # -- endpoint to call target on incoming record
   endpoint:
+  # -- target liveliness route
   isAlive: /isAlive
 
 livenessProbe:
   httpGet:
+    # -- the path for liveness check
     path: /isAlive
     port: *port
 readinessProbe:
   httpGet:
+    # -- the path for readiness check
     path: /isAlive
     port: *port
 
 resources:
   requests:
+    # -- cpu requests
     cpu: '400m'
+    # -- memory requests
     memory: '400Mi'
   limits:
+    # -- cpu limits
     cpu: '800m'
+    # -- memory limits
     memory: '800Mi'
 
 metrics:
-  enabled: true
-  path: /metrics 
+  # -- should prometheus scrape this server
+  : true
+  # -- a path prometheus should scrape metrics from
+  path: /metrics
+
+auth:
+  # -- sasl username
+  saslUsername:
+   # -- gcp secret resource for sasl password
+  saslPasswordResource:
+   # -- mount GCP secrets to Opaque secrets
+  useOpaqueSecrets: true
+  truststore:
+     # -- gcp secret resource for truststore file
+    truststoreResource:
+     # -- gcp secret resource for truststore password
+    truststorePasswordResource:  
