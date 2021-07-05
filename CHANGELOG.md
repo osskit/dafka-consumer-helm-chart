@@ -5,6 +5,7 @@ This version is a breking change with adjustments to the new dafka-consumer API:
 * change TARGET_IS_ALIVE_HTTP_ENDPOINT to TARGET_IS_ALIVE_ROUTE
 * added support for opaque secrets
 * added image.name and image.tag
+* added imagePullPolicy: Always
 
 # 0.1.0
 * removed SENDING_PROTOCOL
