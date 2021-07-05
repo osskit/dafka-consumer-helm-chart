@@ -8,28 +8,28 @@ A Helm Chart for Dafka Consumer
 
 | Key | Type | Default | Description |
 |-----|------|---------|-------------|
-| name | string | `"kafka-consumer"` |  |
-| port | int | `3000` |  |
-| replicaCount | int | `2` |  |
-| image | string | `"osskit/dafka-consumer:2.0.0"` |  |
-| usePrometheus | bool | `true` |  |
-| secret.provider | string | `nil` |  |
-| secret.resourceName | string | `nil` |  |
-| secret.fileName | string | `nil` |  |
-| auth.saslUsername | string | `nil` |  |
-| auth.saslPasswordFilePath | string | `"/secrets-files/SASL_PASSWORD"` |  |
-| target.baseUrl | string | `nil` |  |
-| target.port | int | `80` |  |
-| target.endpoint | string | `nil` |  |
-| target.isAlive | string | `"/isAlive"` |  |
-| livenessProbe.httpGet.path | string | `"/isAlive"` |  |
+| name | string | `"kafka-consumer"` | name for this consumer |
+| port | int | `3000` | the port to use |
+| replicaCount | int | `2` | pod count |
+| image.name | string | `"osskit/dafka-consumer"` | the image name to use |
+| image.tag | string | `"2.0"` | the image tag to use |
+| target.baseUrl | string | `nil` | base url of target |
+| target.port | int | `80` | target port |
+| target.endpoint | string | `nil` | endpoint to call target on incoming record |
+| target.isAlive | string | `"/isAlive"` | target liveliness route |
+| livenessProbe.httpGet.path | string | `"/isAlive"` | the path for liveness check |
 | livenessProbe.httpGet.port | int | `3000` |  |
-| readinessProbe.httpGet.path | string | `"/isAlive"` |  |
+| readinessProbe.httpGet.path | string | `"/isAlive"` | the path for readiness check |
 | readinessProbe.httpGet.port | int | `3000` |  |
-| resources.requests.cpu | string | `"400m"` |  |
-| resources.requests.memory | string | `"400Mi"` |  |
-| resources.limits.cpu | string | `"800m"` |  |
-| resources.limits.memory | string | `"800Mi"` |  |
-| metrics.enabled | bool | `true` |  |
-| metrics.path | string | `"/metrics"` |  |
+| resources.requests.cpu | string | `"400m"` | cpu requests |
+| resources.requests.memory | string | `"400Mi"` | memory requests |
+| resources.limits.cpu | string | `"800m"` | cpu limits |
+| resources.limits.memory | string | `"800Mi"` | memory limits |
+| metrics.enabled | bool | `true` | should prometheus scrape this server |
+| metrics.path | string | `"/metrics"` | a path prometheus should scrape metrics from |
+| auth.saslUsername | string | `nil` | sasl username |
+| auth.saslPasswordResource | string | `nil` | gcp secret resource for sasl password |
+| auth.useOpaqueSecrets | bool | `true` | mount GCP secrets to Opaque secrets |
+| auth.truststore.truststoreResource | string | `nil` | gcp secret resource for truststore file |
+| auth.truststore.truststorePasswordResource | string | `nil` | gcp secret resource for truststore password |
 
