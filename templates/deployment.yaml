@@ -34,8 +34,12 @@ spec:
               value: {{ .Values.broker }}
             - name: GROUP_ID
               value: {{ .Values.groupId | default .Release.Name }}
-            - name: TOPICS
-              value: {{ .Values.topics }}                
+            - name: TARGET_BASE_URL
+              value: {{ .Values.target.baseUrl | default (printf "http://%s" .Release.Name) }}:{{ .Values.target.port }}
+            - name: TOPICS_ROUTES
+              value: {{ .Values.target.topicsRoutes }}              
+            - name: TARGET_HEALTHCHECK
+              value: {{ .Values.target.healthcheck }}               
             {{- if .Values.retry  }}
             - name: RETRY_TOPIC
               value: {{ .Values.retry.topic | default (printf "%s-retry" .Release.Name) }}
@@ -45,11 +49,7 @@ spec:
               value: {{ .Values.deadLetter.topic | default (printf "%s-dead-letter" .Release.Name) }}
             {{- end }}
             - name: PROCESSING_DELAY
-              value: {{ .Values.target.processingDelay | default "0" | squote}}
-            - name: TARGET
-              value: {{ .Values.target.baseUrl | default (printf "http://%s" .Release.Name) }}:{{ .Values.target.port }}{{ .Values.target.endpoint }}
-            - name: TARGET_IS_ALIVE_ROUTE
-              value: {{ .Values.target.baseUrl | default (printf "http://%s" .Release.Name) }}:{{ .Values.target.port }}{{ .Values.target.isAlive }}
+              value: {{ .Values.target.pocessingDelay | default "0" | squote}}
             - name: USE_PROMETHEUS
               value: {{ .Values.metrics.enabled | squote }}
             - name: MONITORING_SERVER_PORT

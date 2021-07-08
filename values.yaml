@@ -11,27 +11,29 @@ image:
   # -- the image name to use
   name: osskit/dafka-consumer
   # -- the image tag to use
-  tag: '2.0'
-  
+  tag: '3.0'
+
 target:
-  # -- base url of target
+  # -- target base url
   baseUrl:
   # -- target port
   port: 80
-  # -- endpoint to call target on incoming record
-  endpoint:
-  # -- target liveliness route
-  isAlive: /isAlive
+  # -- target healthcheck route
+  healthcheck:
+  # -- mapping of topics to corresponding routes in target
+  topicsRoutes:
+  # -- adds delay before processing next record
+  processingDelay:
 
 livenessProbe:
   httpGet:
     # -- the path for liveness check
-    path: /isAlive
+    path: /healthcheck
     port: *port
 readinessProbe:
   httpGet:
     # -- the path for readiness check
-    path: /isAlive
+    path: /healthcheck
     port: *port
 
 resources:
