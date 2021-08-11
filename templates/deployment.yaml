@@ -58,13 +58,19 @@ spec:
               value: 'true'
             - name: SASL_USERNAME
               value: {{ .Values.auth.saslUsername }}
-            {{- if .Values.auth.useOpaqueSecrets}}
+            {{- if .Values.auth.saslPassword }}
+            - name: SASL_PASSWORD
+              value: {{ .Values.auth.saslPassword | squote }}
+            {{- else if .Values.auth.useOpaqueSecrets }}
             - name: SASL_PASSWORD
               valueFrom:
                 secretKeyRef:
                   name: {{ .Release.Name }}-kafka-consumer
                   key: SASL_PASSWORD
-            {{- else }}
+            {{- else }}                  
+            - name: SASL_PASSWORD_FILE_PATH
+              value: {{ .Values.auth.saslPasswordFilePath| squote }}
+            {{- end }}
             - name: SASL_PASSWORD_FILE_PATH
               value: /secrets-files/SASL_PASSWORD
             {{- end }}
