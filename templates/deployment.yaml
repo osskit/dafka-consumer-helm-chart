@@ -65,7 +65,7 @@ spec:
             - name: SASL_PASSWORD
               valueFrom:
                 secretKeyRef:
-                  name: {{ .Release.Name }}-kafka-producer
+                  name: {{ .Release.Name }}-kafka-consumer
                   key: SASL_PASSWORD
             {{- else }}                  
             - name: SASL_PASSWORD_FILE_PATH
