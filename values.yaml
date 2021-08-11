@@ -58,7 +58,7 @@ auth:
   # -- sasl username
   saslUsername:
   secrets:
-    # -- mount secrets to opaque secrets
+    # -- should mount secrets to opaque secrets
     useOpaqueSecrets: true
     # -- should use truststore
     useTrustsore: false
