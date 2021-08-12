@@ -68,7 +68,7 @@ spec:
             - name: SASL_PASSWORD_FILE_PATH
               value: /secrets-files/SASL_PASSWORD
             {{- end }}
-            {{- if .Values.auth.truststore }}
+            {{- if .Values.auth.useTruststore }}
             - name: TRUSTSTORE_FILE_PATH
               value: /secrets-files/truststore
             {{- if .Values.auth.useOpaqueSecrets}}
