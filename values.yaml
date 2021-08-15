@@ -58,13 +58,12 @@ auth:
   # -- sasl username
   saslUsername:
   # -- sasl password (not encrypted)
-  saslUsername:
+  saslPassword:
   secrets:
     # -- should mount secrets to opaque secrets
     useOpaqueSecrets: true
     # -- should use truststore
     useTrustsore: false
-    # -- gcp configurtion
     gcp:
       # -- gcp secret resource for sasl password
       saslPasswordResource:
@@ -72,7 +71,6 @@ auth:
       truststoreResource:
       # -- gcp secret resource for truststore password
       truststorePasswordResource:
-    # -- vault configurtion
     vault:
       # -- vault secret path for sasl password
       saslPasswordSecretPath:
