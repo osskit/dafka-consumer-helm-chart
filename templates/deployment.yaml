@@ -55,7 +55,9 @@ spec:
             - name: USE_PROMETHEUS
               value: {{ .Values.metrics.enabled | squote }}
             - name: MONITORING_SERVER_PORT
-              value: {{ .Values.port | squote }}        
+              value: {{ .Values.port | squote }}
+            - name: MAX_POLL_RECORDS
+              value: {{ .Values.maxPollRecords | default "50" | squote }}
             - name: USE_SASL_AUTH
               value: 'true'
             - name: SASL_USERNAME
@@ -69,7 +71,7 @@ spec:
                 secretKeyRef:
                   name: {{ .Release.Name }}-kafka-consumer
                   key: SASL_PASSWORD
-            {{- else }}                  
+            {{- else }}
             - name: SASL_PASSWORD_FILE_PATH
               value: {{ .Values.auth.saslPasswordFilePath| squote }}
             {{- end }}
