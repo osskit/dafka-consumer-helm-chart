@@ -7,11 +7,11 @@ port: &port 3000
 # -- pod count
 replicaCount: 2
 
-image: 
+image:
   # -- the image name to use
   name: osskit/dafka-consumer
   # -- the image tag to use
-  tag: '3.0'
+  tag: '4.0'
 
 target:
   # -- target base url

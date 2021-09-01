@@ -39,9 +39,9 @@ spec:
             - name: TARGET_BASE_URL
               value: {{ .Values.target.baseUrl | default (printf "http://%s" .Release.Name) }}:{{ .Values.target.port }}
             - name: TOPICS_ROUTES
-              value: {{ .Values.target.topicsRoutes }}              
+              value: {{ .Values.target.topicsRoutes }}
             - name: TARGET_HEALTHCHECK
-              value: {{ .Values.target.healthcheck }}               
+              value: {{ .Values.target.healthcheck }}
             {{- if .Values.retry  }}
             - name: RETRY_TOPIC
               value: {{ .Values.retry.topic | default (printf "%s-retry" .Release.Name) }}
@@ -56,8 +56,18 @@ spec:
               value: {{ .Values.metrics.enabled | squote }}
             - name: MONITORING_SERVER_PORT
               value: {{ .Values.port | squote }}
+            {{- if .Values.maxPollRecords }}
             - name: MAX_POLL_RECORDS
-              value: {{ .Values.maxPollRecords | default "50" | squote }}
+              value: {{ .Values.maxPollRecords | squote }}
+            {{- end }}
+            {{- if .Values.targetTimeoutMs }}
+            - name: TARGET_TIMEOUT_MS
+              value: {{ .Values.targetTimeoutMs | squote }}
+            {{- end }}
+            {{- if .Values.debug }}
+            - name: DEBUG
+              value: {{ .Values.debug | squote }}
+            {{- end }}
             - name: USE_SASL_AUTH
               value: 'true'
             - name: SASL_USERNAME
@@ -86,7 +96,7 @@ spec:
                   key: TRUSTSTORE_PASSWORD
             {{- else }}
             - name: TRUSTSTORE_PASSWORD_FILE_PATH
-              value: /secrets-files/TRUSTSTORE_PASSWORD                  
+              value: /secrets-files/TRUSTSTORE_PASSWORD
             {{- end }}
             {{- end }}
           livenessProbe:
