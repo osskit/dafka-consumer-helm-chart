@@ -17,7 +17,7 @@ spec:
       annotations:
         prometheus.io/path: {{ .Values.metrics.path }}
         prometheus.io/port: {{ .Values.port | quote }}
-        prometheus.io/scrape: {{ .Values.metrics.enabled | quote }}        
+        prometheus.io/scrape: {{ .Values.metrics.enabled | quote }}
     spec:
       serviceAccountName: {{ .Values.serviceAccountName }}
       containers:
