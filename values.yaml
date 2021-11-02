@@ -55,6 +55,8 @@ metrics:
   path: /metrics
 
 auth:
+  # -- should use authentication
+  enabled: true
   # -- sasl username
   saslUsername:
   # -- sasl password (not encrypted)

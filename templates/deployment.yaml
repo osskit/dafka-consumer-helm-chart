@@ -69,7 +69,7 @@ spec:
               value: {{ .Values.debug | squote }}
             {{- end }}
             - name: USE_SASL_AUTH
-              value: 'true'
+              value: {{ .Values.auth.enabled | squote }}
             - name: SASL_USERNAME
               value: {{ .Values.auth.saslUsername }}
             {{- if .Values.auth.saslPassword }}
