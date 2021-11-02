@@ -72,6 +72,7 @@ spec:
             {{- end }}
             - name: USE_SASL_AUTH
               value: {{ .Values.auth.enabled | squote }}
+        {{- if .Values.auth.enabled }}
             - name: SASL_USERNAME
               value: {{ .Values.auth.saslUsername }}
             {{- if .Values.auth.saslPassword }}
@@ -101,6 +102,7 @@ spec:
               value: /secrets-files/TRUSTSTORE_PASSWORD
             {{- end }}
             {{- end }}
+        {{- end }}
           livenessProbe:
 {{ toYaml .Values.livenessProbe | indent 12 }}
           readinessProbe:
