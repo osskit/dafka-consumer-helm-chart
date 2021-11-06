@@ -14,12 +14,10 @@ spec:
     metadata:
       labels:
         app: {{ .Release.Name }}-kafka-consumer
-{{ if .Values.metrics.enabled }}
       annotations:
         prometheus.io/path: {{ .Values.metrics.path }}
         prometheus.io/port: {{ .Values.port | quote }}
         prometheus.io/scrape: {{ .Values.metrics.enabled | quote }}
-{{ end }}
     spec:
       serviceAccountName: {{ .Values.serviceAccountName }}
       containers:
