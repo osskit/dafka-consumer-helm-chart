@@ -22,10 +22,10 @@ A Helm Chart for Dafka Consumer
 | livenessProbe.httpGet.port | int | `3000` |  |
 | readinessProbe.httpGet.path | string | `"/healthcheck"` | the path for readiness check |
 | readinessProbe.httpGet.port | int | `3000` |  |
-| resources.requests.cpu | string | `"1m"` | cpu requests |
-| resources.requests.memory | string | `"1Mi"` | memory requests |
-| resources.limits.cpu | string | `"50m"` | cpu limits |
-| resources.limits.memory | string | `"100Mi"` | memory limits |
+| resources.requests.cpu | string | `"50m"` | cpu requests |
+| resources.requests.memory | string | `"100Mi"` | memory requests |
+| resources.limits.cpu | string | `"100m"` | cpu limits |
+| resources.limits.memory | string | `"200Mi"` | memory limits |
 | metrics.enabled | bool | `true` | should prometheus scrape this server |
 | metrics.path | string | `"/metrics"` | a path prometheus should scrape metrics from |
 | auth.enabled | bool | `false` | should use authentication |
