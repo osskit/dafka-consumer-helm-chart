@@ -1,6 +1,6 @@
 # dafka-consumer
 
-![Version: 0.9.0](https://img.shields.io/badge/Version-0.9.0-informational?style=flat-square)
+![Version: 1.0.0](https://img.shields.io/badge/Version-1.0.0-informational?style=flat-square)
 
 A Helm Chart for Dafka Consumer
 
@@ -10,7 +10,7 @@ A Helm Chart for Dafka Consumer
 |-----|------|---------|-------------|
 | name | string | `"kafka-consumer"` | name for this consumer |
 | port | int | `3000` | the port to use |
-| replicaCount | int | `2` | pod count |
+| replicaCount | int | `1` | pod count |
 | image.name | string | `"osskit/dafka-consumer"` | the image name to use |
 | image.tag | string | `"4.0"` | the image tag to use |
 | target.baseUrl | string | `nil` | target base url |
@@ -22,13 +22,13 @@ A Helm Chart for Dafka Consumer
 | livenessProbe.httpGet.port | int | `3000` |  |
 | readinessProbe.httpGet.path | string | `"/healthcheck"` | the path for readiness check |
 | readinessProbe.httpGet.port | int | `3000` |  |
-| resources.requests.cpu | string | `"400m"` | cpu requests |
-| resources.requests.memory | string | `"400Mi"` | memory requests |
-| resources.limits.cpu | string | `"800m"` | cpu limits |
-| resources.limits.memory | string | `"800Mi"` | memory limits |
+| resources.requests.cpu | string | `"1m"` | cpu requests |
+| resources.requests.memory | string | `"1Mi"` | memory requests |
+| resources.limits.cpu | string | `"50m"` | cpu limits |
+| resources.limits.memory | string | `"100Mi"` | memory limits |
 | metrics.enabled | bool | `true` | should prometheus scrape this server |
 | metrics.path | string | `"/metrics"` | a path prometheus should scrape metrics from |
-| auth.enabled | bool | `true` | should use authentication |
+| auth.enabled | bool | `false` | should use authentication |
 | auth.saslUsername | string | `nil` | sasl username |
 | auth.saslPassword | string | `nil` | sasl password (not encrypted) |
 | auth.secrets.useOpaqueSecrets | bool | `true` | should mount secrets to opaque secrets |
