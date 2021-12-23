@@ -5,7 +5,7 @@ name: kafka-consumer
 port: &port 3000
 
 # -- pod count
-replicaCount: 2
+replicaCount: 1
 
 image:
   # -- the image name to use
@@ -39,14 +39,14 @@ readinessProbe:
 resources:
   requests:
     # -- cpu requests
-    cpu: '400m'
+    cpu: '1m'
     # -- memory requests
-    memory: '400Mi'
+    memory: '1Mi'
   limits:
     # -- cpu limits
-    cpu: '800m'
+    cpu: '50m'
     # -- memory limits
-    memory: '800Mi'
+    memory: '100Mi'
 
 metrics:
   # -- should prometheus scrape this server
@@ -56,7 +56,7 @@ metrics:
 
 auth:
   # -- should use authentication
-  enabled: true
+  enabled: false
   # -- sasl username
   saslUsername:
   # -- sasl password (not encrypted)
