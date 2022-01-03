@@ -1,6 +1,6 @@
 # dafka-consumer
 
-![Version: 1.0.0](https://img.shields.io/badge/Version-1.0.0-informational?style=flat-square)
+![Version: 1.0.1](https://img.shields.io/badge/Version-1.0.1-informational?style=flat-square)
 
 A Helm Chart for Dafka Consumer
 
@@ -24,8 +24,8 @@ A Helm Chart for Dafka Consumer
 | readinessProbe.httpGet.port | int | `3000` |  |
 | resources.requests.cpu | string | `"50m"` | cpu requests |
 | resources.requests.memory | string | `"100Mi"` | memory requests |
-| resources.limits.cpu | string | `"100m"` | cpu limits |
-| resources.limits.memory | string | `"200Mi"` | memory limits |
+| resources.limits.cpu | string | `"200m"` | cpu limits |
+| resources.limits.memory | string | `"400Mi"` | memory limits |
 | metrics.enabled | bool | `true` | should prometheus scrape this server |
 | metrics.path | string | `"/metrics"` | a path prometheus should scrape metrics from |
 | auth.enabled | bool | `false` | should use authentication |
