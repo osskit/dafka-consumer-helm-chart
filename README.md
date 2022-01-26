@@ -1,6 +1,6 @@
 # dafka-consumer
 
-![Version: 1.0.2](https://img.shields.io/badge/Version-1.0.2-informational?style=flat-square)
+![Version: 1.1.0](https://img.shields.io/badge/Version-1.1.0-informational?style=flat-square)
 
 A Helm Chart for Dafka Consumer
 
@@ -12,11 +12,11 @@ A Helm Chart for Dafka Consumer
 | port | int | `3000` | the port to use |
 | replicaCount | int | `1` | pod count |
 | image.name | string | `"osskit/dafka-consumer"` | the image name to use |
-| image.tag | string | `"4.0"` | the image tag to use |
+| image.tag | string | `"4.1"` | the image tag to use |
 | target.baseUrl | string | `nil` | target base url |
 | target.port | int | `80` | target port |
 | target.healthcheck | string | `nil` | target healthcheck route |
-| target.topicsRoutes | string | `nil` | mapping of topics as hardcoded topics, or regex patterns to corresponding routes in target |
+| target.topicsRoutes | string | `nil` | mapping of topics to corresponding routes in target |
 | target.processingDelay | string | `nil` | adds delay before processing next record |
 | livenessProbe.httpGet.path | string | `"/healthcheck"` | the path for liveness check |
 | livenessProbe.httpGet.port | int | `3000` |  |
