@@ -44,6 +44,14 @@ spec:
               value: {{ .Values.target.topicsRoutes }}
             - name: TARGET_HEALTHCHECK
               value: {{ .Values.target.healthcheck }}
+            {{- if .Values.correlation.enforce }}
+            - name: ENFORCE_CORRELATION_ID
+              value: {{ .Values.correlation.enforce | squote }}
+            {{- end }}
+  -         {{- if .Values.correlation.header }}
+            - name: CORRELATION_HEADER
+              value: {{ .Values.correlation.header | squote }}
+            {{- end }}
             {{- if .Values.retry  }}
             - name: RETRY_TOPIC
               value: {{ .Values.retry.topic | default (printf "%s-retry" .Release.Name) }}
