@@ -49,7 +49,7 @@ spec:
               value: {{ .Values.correlationId.enforce | squote }}
             {{- end }}
   -         {{- if .Values.correlationId.header }}
-            - name: CORRELATION_HEADER
+            - name: CORRELATION_ID_HEADER
               value: {{ .Values.correlationId.header | squote }}
             {{- end }}
             {{- if .Values.retry  }}
