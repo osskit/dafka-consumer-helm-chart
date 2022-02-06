@@ -44,13 +44,13 @@ spec:
               value: {{ .Values.target.topicsRoutes }}
             - name: TARGET_HEALTHCHECK
               value: {{ .Values.target.healthcheck }}
-            {{- if .Values.correlation.enforce }}
+            {{- if .Values.correlationId.enforce }}
             - name: ENFORCE_CORRELATION_ID
-              value: {{ .Values.correlation.enforce | squote }}
+              value: {{ .Values.correlationId.enforce | squote }}
             {{- end }}
-  -         {{- if .Values.correlation.header }}
+  -         {{- if .Values.correlationId.header }}
             - name: CORRELATION_HEADER
-              value: {{ .Values.correlation.header | squote }}
+              value: {{ .Values.correlationId.header | squote }}
             {{- end }}
             {{- if .Values.retry  }}
             - name: RETRY_TOPIC
