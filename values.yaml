@@ -11,7 +11,7 @@ image:
   # -- the image name to use
   name: osskit/dafka-consumer
   # -- the image tag to use
-  tag: '4.1'
+  tag: '4.2'
 
 target:
   # -- target base url
@@ -53,6 +53,12 @@ metrics:
   enabled: true
   # -- a path prometheus should scrape metrics from
   path: /metrics
+
+correlationId:
+  # -- should enforce correlation header being present in the record
+  enforce: true
+  # -- the header of the correlation id
+  header: 'x-correlation-id'
 
 auth:
   # -- should use authentication
