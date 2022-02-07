@@ -45,11 +45,11 @@ spec:
             - name: TARGET_HEALTHCHECK
               value: {{ .Values.target.healthcheck }}
             {{- if .Values.correlationId.enforce }}
-            - name: ENFORCE_CORRELATION_ID
-              value: {{ .Values.correlationId.enforce | squote }}
+            - name: USE_CORRELATION_ID
+              value: {{ .Values.correlationId.enabled | squote }}
             {{- end }}
   -         {{- if .Values.correlationId.header }}
-            - name: CORRELATION_ID_HEADER
+            - name: CORRELATION_ID_HEADER_KEY
               value: {{ .Values.correlationId.header | squote }}
             {{- end }}
             {{- if .Values.retry  }}
