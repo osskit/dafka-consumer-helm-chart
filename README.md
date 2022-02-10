@@ -1,6 +1,6 @@
 # dafka-consumer
 
-![Version: 1.4.0](https://img.shields.io/badge/Version-1.4.0-informational?style=flat-square)
+![Version: 1.5.0](https://img.shields.io/badge/Version-1.5.0-informational?style=flat-square)
 
 A Helm Chart for Dafka Consumer
 
@@ -30,6 +30,8 @@ A Helm Chart for Dafka Consumer
 | metrics.path | string | `"/metrics"` | a path prometheus should scrape metrics from |
 | correlationId.enforce | bool | `true` | should enforce correlation header being present in the record |
 | correlationId.header | string | `"x-correlation-id"` | the header of the correlation id |
+| retry.topic | string | `nil` | retry topic to produce to |
+| deadLetter.topic | string | `nil` | dead letter topic to produce to |
 | auth.enabled | bool | `false` | should use authentication |
 | auth.saslUsername | string | `nil` | sasl username |
 | auth.saslPassword | string | `nil` | sasl password (not encrypted) |
