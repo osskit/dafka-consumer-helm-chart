@@ -60,6 +60,14 @@ correlationId:
   # -- the header of the correlation id
   header: 'x-correlation-id'
 
+retry:
+  # -- retry topic to produce to
+  topic:
+
+deadLetter:
+  # -- dead letter topic to produce to
+  topic:
+
 auth:
   # -- should use authentication
   enabled: false
