@@ -1,6 +1,6 @@
 # dafka-consumer
 
-![Version: 1.5.4](https://img.shields.io/badge/Version-1.5.4-informational?style=flat-square)
+![Version: 1.5.5](https://img.shields.io/badge/Version-1.5.5-informational?style=flat-square)
 
 A Helm Chart for Dafka Consumer
 
@@ -18,6 +18,7 @@ A Helm Chart for Dafka Consumer
 | target.healthcheck | string | `nil` | target healthcheck route |
 | target.topicsRoutes | string | `nil` | mapping of topics to corresponding routes in target |
 | target.processingDelay | string | `nil` | adds delay before processing next record |
+| livenessProbe.initialDelaySeconds | int | `60` |  |
 | livenessProbe.httpGet.path | string | `"/healthcheck"` | the path for liveness check |
 | livenessProbe.httpGet.port | int | `3000` |  |
 | readinessProbe.httpGet.path | string | `"/healthcheck"` | the path for readiness check |
