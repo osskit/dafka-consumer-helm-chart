@@ -27,6 +27,7 @@ A Helm Chart for Dafka Consumer
 | resources.requests.memory | string | `"100Mi"` | memory requests |
 | resources.limits.cpu | string | `"200m"` | cpu limits |
 | resources.limits.memory | string | `"400Mi"` | memory limits |
+| podLabels | string | `nil` |  |
 | metrics.enabled | bool | `true` | should prometheus scrape this server |
 | metrics.path | string | `"/metrics"` | a path prometheus should scrape metrics from |
 | auth.enabled | bool | `false` | should use authentication |
