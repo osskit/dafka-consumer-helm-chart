@@ -49,6 +49,8 @@ resources:
     # -- memory limits
     memory: '400Mi'
 
+podLabels:
+
 metrics:
   # -- should prometheus scrape this server
   enabled: true
