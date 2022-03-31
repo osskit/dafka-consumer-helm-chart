@@ -18,7 +18,6 @@ spec:
         {{- range $key, $value := .Values.podLabels }}
           {{ $key }}: { { $value | quote }}
         {{- end }}
-          sidecar.istio.io/inject: "true"
       annotations:
         prometheus.io/path: {{ .Values.metrics.path }}
         prometheus.io/port: {{ .Values.port | quote }}
