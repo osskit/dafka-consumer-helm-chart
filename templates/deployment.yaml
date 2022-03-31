@@ -14,9 +14,8 @@ spec:
     metadata:
       labels:
         app: {{ .Release.Name }}-kafka-consumer
-        podLabels:
         {{- range $key, $value := .Values.podLabels }}
-          {{ $key }}: {{ $value | quote }}
+        {{ $key }}: {{ $value | quote }}
         {{- end }}
       annotations:
         prometheus.io/path: {{ .Values.metrics.path }}
