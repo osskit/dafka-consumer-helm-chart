@@ -49,6 +49,7 @@ resources:
     # -- memory limits
     memory: '400Mi'
 
+# -- labels to add to the pod metadata
 podLabels:
 
 metrics:
