@@ -49,6 +49,9 @@ resources:
     # -- memory limits
     memory: '400Mi'
 
+# -- labels to add to the pod metadata
+podLabels:
+
 metrics:
   # -- should prometheus scrape this server
   enabled: true
