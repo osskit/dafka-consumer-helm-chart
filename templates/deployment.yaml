@@ -69,10 +69,6 @@ spec:
             - name: TARGET_TIMEOUT_MS
               value: {{ .Values.targetTimeoutMs | squote }}
             {{- end }}
-            {{- if .Values.debug }}
-            - name: DEBUG
-              value: {{ .Values.debug | squote }}
-            {{- end }}
             - name: USE_SASL_AUTH
               value: {{ .Values.auth.enabled | squote }}
         {{- if .Values.auth.enabled }}
