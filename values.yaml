@@ -11,7 +11,7 @@ image:
   # -- the image name to use
   name: osskit/dafka-consumer
   # -- the image tag to use
-  tag: '4.4'
+  tag: '4.5'
 
 target:
   # -- target base url
