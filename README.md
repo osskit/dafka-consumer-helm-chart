@@ -18,11 +18,12 @@ A Helm Chart for Dafka Consumer
 | target.healthcheck | string | `nil` | target healthcheck route |
 | target.topicsRoutes | string | `nil` | mapping of topics to corresponding routes in target |
 | target.processingDelay | string | `nil` | adds delay before processing next record |
-| livenessProbe.initialDelaySeconds | int | `60` |  |
 | livenessProbe.httpGet.path | string | `"/healthcheck"` | the path for liveness check |
 | livenessProbe.httpGet.port | int | `3000` |  |
 | readinessProbe.httpGet.path | string | `"/healthcheck"` | the path for readiness check |
 | readinessProbe.httpGet.port | int | `3000` |  |
+| startupProbe.httpGet.path | string | `"/healthcheck"` | the path for liveness check |
+| startupProbe.httpGet.port | int | `3000` |  |
 | resources.requests.cpu | string | `"50m"` | cpu requests |
 | resources.requests.memory | string | `"100Mi"` | memory requests |
 | resources.limits.cpu | string | `"200m"` | cpu limits |
