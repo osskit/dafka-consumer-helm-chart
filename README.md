@@ -1,6 +1,6 @@
 # dafka-consumer
 
-![Version: 1.6.3](https://img.shields.io/badge/Version-1.6.3-informational?style=flat-square)
+![Version: 3.0.0](https://img.shields.io/badge/Version-3.0.0-informational?style=flat-square)
 
 A Helm Chart for Dafka Consumer
 
@@ -12,17 +12,17 @@ A Helm Chart for Dafka Consumer
 | port | int | `3000` | the port to use |
 | replicaCount | int | `1` | pod count |
 | image.name | string | `"osskit/dafka-consumer"` | the image name to use |
-| image.tag | string | `"4.5"` | the image tag to use |
+| image.tag | string | `"5.0"` | the image tag to use |
 | target.baseUrl | string | `nil` | target base url |
 | target.port | int | `80` | target port |
 | target.healthcheck | string | `nil` | target healthcheck route |
 | target.topicsRoutes | string | `nil` | mapping of topics to corresponding routes in target |
 | target.processingDelay | string | `nil` | adds delay before processing next record |
-| livenessProbe.httpGet.path | string | `"/healthcheck"` | the path for liveness check |
+| livenessProbe.httpGet.path | string | `"/alive"` | the path for liveness check |
 | livenessProbe.httpGet.port | int | `3000` |  |
-| readinessProbe.httpGet.path | string | `"/healthcheck"` | the path for readiness check |
+| readinessProbe.httpGet.path | string | `"/ready"` | the path for readiness check |
 | readinessProbe.httpGet.port | int | `3000` |  |
-| startupProbe.httpGet.path | string | `"/healthcheck"` | the path for startup check |
+| startupProbe.httpGet.path | string | `"/ready"` | the path for startup check |
 | startupProbe.httpGet.port | int | `3000` |  |
 | startupProbe.failureThreshold | int | `6` |  |
 | startupProbe.periodSeconds | int | `10` |  |
