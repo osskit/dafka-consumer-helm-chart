@@ -26,7 +26,7 @@ target:
   processingDelay:
 
 livenessProbe:
-  initialDelaySeconds: 60
+  initialDelaySeconds: 180
   httpGet:
     # -- the path for liveness check
     path: /alive
