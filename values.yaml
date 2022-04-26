@@ -26,6 +26,7 @@ target:
   processingDelay:
 
 livenessProbe:
+  initialDelaySeconds: 60
   httpGet:
     # -- the path for liveness check
     path: /alive
@@ -36,15 +37,6 @@ readinessProbe:
     # -- the path for readiness check
     path: /ready
     port: *port
-
-startupProbe:
-  httpGet:
-    # -- the path for startup check
-    path: /ready
-    port: *port
-  failureThreshold: 6
-  periodSeconds: 10
-
 
 resources:
   requests:
