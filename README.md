@@ -18,7 +18,7 @@ A Helm Chart for Dafka Consumer
 | target.healthcheck | string | `nil` | target healthcheck route |
 | target.topicsRoutes | string | `nil` | mapping of topics to corresponding routes in target |
 | target.processingDelay | string | `nil` | adds delay before processing next record |
-| livenessProbe.initialDelaySeconds | int | `60` |  |
+| livenessProbe.initialDelaySeconds | int | `180` |  |
 | livenessProbe.httpGet.path | string | `"/alive"` | the path for liveness check |
 | livenessProbe.httpGet.port | int | `3000` |  |
 | readinessProbe.httpGet.path | string | `"/ready"` | the path for readiness check |
