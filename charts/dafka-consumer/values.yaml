@@ -41,12 +41,12 @@ readinessProbe:
 resources:
   requests:
     # -- cpu requests
-    cpu: '50m'
+    cpu: '200m'
     # -- memory requests
     memory: '100Mi'
   limits:
     # -- cpu limits
-    cpu: '200m'
+    cpu: '500m'
     # -- memory limits
     memory: '400Mi'
 
