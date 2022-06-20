@@ -32,6 +32,8 @@ livenessProbe:
     path: /alive
     port: *port
 
+# -- headers that will be passed onto the kafka record headers
+passthroughHeaders:
 readinessProbe:
   httpGet:
     # -- the path for readiness check
