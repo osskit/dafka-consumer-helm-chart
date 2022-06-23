@@ -1,4 +1,4 @@
 apiVersion: v1
 description: A Helm Chart for Dafka Consumer
 name: dafka-consumer
-version: 3.1.2
+version: 4.0.0
