@@ -45,8 +45,10 @@ spec:
               value: {{ .Values.target.baseUrl | default (printf "http://%s" .Release.Name) }}:{{ .Values.target.port }}
             - name: TOPICS_ROUTES
               value: {{ .Values.target.topicsRoutes }}
+            {{- if .Values.target.healthcheck  }}
             - name: TARGET_HEALTHCHECK
               value: {{ .Values.target.healthcheck }}
+            {{- end }}
             {{- if .Values.retry  }}
             - name: RETRY_TOPIC
               value: {{ .Values.retry.topic | default (printf "%s-retry" .Release.Name) }}
