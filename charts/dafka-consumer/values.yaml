@@ -1,6 +1,9 @@
 # -- name for this consumer
 name: kafka-consumer
 
+# -- the url of the kafka broker
+broker: 
+
 # -- the port to use
 port: &port 3000
 
