@@ -11,6 +11,7 @@ A Helm Chart for Dafka Consumer
 | name | string | `"kafka-consumer"` | name for this consumer |
 | port | int | `3000` | the port to use |
 | replicaCount | int | `1` | pod count |
+| broker | string | `nil` | the url of the kafka broker 
 | image.name | string | `"osskit/dafka-consumer"` | the image name to use |
 | image.tag | string | `"6.0"` | the image tag to use |
 | target.baseUrl | string | `nil` | target base url |
