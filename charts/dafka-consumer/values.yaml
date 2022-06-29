@@ -30,12 +30,6 @@ target:
 
 livenessProbe:
   initialDelaySeconds: 180
-  httpGet:
-    port: *port
-
-readinessProbe:
-  httpGet:
-    port: *port
 
 resources:
   requests:
