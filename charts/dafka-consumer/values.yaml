@@ -4,6 +4,9 @@ name: kafka-consumer
 # -- the port to use
 port: &port 3000
 
+# -- the url of the kafka broker
+broker: 
+
 # -- pod count
 replicaCount: 1
 
@@ -27,16 +30,6 @@ target:
 
 livenessProbe:
   initialDelaySeconds: 180
-  httpGet:
-    # -- the path for liveness check
-    path: /alive
-    port: *port
-
-readinessProbe:
-  httpGet:
-    # -- the path for readiness check
-    path: /ready
-    port: *port
 
 resources:
   requests:
