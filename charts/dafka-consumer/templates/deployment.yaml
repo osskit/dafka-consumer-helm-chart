@@ -105,11 +105,11 @@ spec:
             {{- end }}
         {{- end }}
           livenessProbe:
+{{ toYaml .Values.livenessProbe.initialDelaySeconds | indent 12 }}  
             httpGet:
               path: /alive
               port: {{ .Values.port }}
           readinessProbe:
-{{ toYaml .Values.readinessProbe.initialDelaySeconds | indent 12 }}  
             httpGet:
               path: /ready
               port: {{ .Values.port }}
