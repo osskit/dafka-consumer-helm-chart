@@ -105,9 +105,14 @@ spec:
             {{- end }}
         {{- end }}
           livenessProbe:
-{{ toYaml .Values.livenessProbe | indent 12 }}
+            httpGet:
+              path: /alive
+{{ toYaml .Values.livenessProbe.httpGet.port | indent 14 }} 
           readinessProbe:
-{{ toYaml .Values.readinessProbe | indent 12 }}          
+{{ toYaml .Values.readinessProbe.initialDelaySeconds | indent 12 }}  
+            httpGet:
+              path: /ready
+{{ toYaml .Values.readinessProbe.httpGet.port | indent 14 }}  
           startupProbe:
 {{ toYaml .Values.startupProbe | indent 12 }}
           resources:
