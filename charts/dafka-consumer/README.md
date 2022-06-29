@@ -20,8 +20,6 @@ A Helm Chart for Dafka Consumer
 | target.topicsRoutes | string | `nil` | mapping of topics to corresponding routes in target |
 | target.processingDelay | string | `nil` | adds delay before processing next record |
 | livenessProbe.initialDelaySeconds | int | `180` |  |
-| livenessProbe.httpGet.port | int | `3000` |  |
-| readinessProbe.httpGet.port | int | `3000` |  |
 | resources.requests.cpu | string | `"50m"` | cpu requests |
 | resources.requests.memory | string | `"100Mi"` | memory requests |
 | resources.limits.cpu | string | `"200m"` | cpu limits |
