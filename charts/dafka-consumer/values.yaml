@@ -57,7 +57,7 @@ auth:
   enabled: false
   # -- sasl username
   saslUsername:
-  # -- sasl mechanism (PLAIN or SCRAM)
+  # -- sasl mechanism (PLAIN or SCRAM-SHA-512)
   saslMechanism: PLAIN
   # -- sasl password (not encrypted)
   saslPassword:
