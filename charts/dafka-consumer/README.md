@@ -1,6 +1,6 @@
 # dafka-consumer
 
-![Version: 5.1.0](https://img.shields.io/badge/Version-5.1.0-informational?style=flat-square)
+![Version: 5.2.0](https://img.shields.io/badge/Version-5.2.0-informational?style=flat-square)
 
 A Helm Chart for Dafka Consumer
 
@@ -29,7 +29,7 @@ A Helm Chart for Dafka Consumer
 | metrics.path | string | `"/metrics"` | a path prometheus should scrape metrics from |
 | auth.enabled | bool | `false` | should use authentication |
 | auth.saslUsername | string | `nil` | sasl username |
-| auth.saslMechanism | string | `"plain"` | sasl mechanism (plain or scram) |
+| auth.saslMechanism | string | `"PLAIN"` | sasl mechanism (PLAIN or SCRAM-SHA-512) |
 | auth.saslPassword | string | `nil` | sasl password (not encrypted) |
 | auth.secrets.useOpaqueSecrets | bool | `true` | should mount secrets to opaque secrets |
 | auth.secrets.useTrustsore | bool | `false` | should use truststore |
