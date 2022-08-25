@@ -56,6 +56,10 @@ spec:
             {{- if .Values.deadLetter }}
             - name: DEAD_LETTER_TOPIC
               value: {{ .Values.deadLetter.topic | default (printf "%s-dead-letter" .Release.Name) }}
+            {{- if .Values.deadLetter.whenStatusCodeMatch }}
+            - name: PRODUCE_TO_DEAD_LETTER_TOPIC_WHEN_STATUS_CODE_MATCH
+              value: {{ .Values.deadLetter.whenStatusCodeMatch }}
+            {{- end }}
             {{- end }}
             - name: PROCESSING_DELAY
               value: {{ .Values.target.pocessingDelay | default "0" | squote}}
