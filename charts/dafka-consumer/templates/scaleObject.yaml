@@ -1,0 +1,20 @@
+{{- if .Values.kedaScaledObject.enabled }}
+apiVersion: keda.sh/v1alpha1
+kind: kedaScaledObject
+metadata:
+  name: {{ .Release.Name }}-{{ .Values.name }}
+spec:
+  scaleTargetRef:
+    name: {{ .Release.Name }}-{{ .Values.name }}
+  pollingInterval: 30
+  triggers:
+{{- range $topicRoute := .Values.target.topicsRoutes}}
+  - type: kafka
+    metadata:
+      bootstrapServers: {{ $.Values.broker }}
+      consumerGroup: {{ $.Values.groupId | default $.Release.Name }}
+      topic: {{ $topicRoute.topic }}
+    authenticationRef:
+      name: {{ $.Values.kedaScaledObject.authenticationRef.name }}
+{{- end }}
+{{- end}}
