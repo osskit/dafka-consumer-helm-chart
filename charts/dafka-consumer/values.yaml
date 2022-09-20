@@ -101,5 +101,3 @@ kedaScaledObject:
   authenticationRef:
     # -- The name of the TriggerAuthentication 
     name:
-    # -- The namespace where it lives. If not set use `{{ .Release.Namespace }}`
-    namespace:

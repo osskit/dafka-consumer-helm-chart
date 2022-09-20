@@ -16,6 +16,5 @@ spec:
       topic: {{ $topicRoute.topic }}
     authenticationRef:
       name: {{ $.Values.kedaScaledObject.authenticationRef.name }}
-      namespace: {{ $.Values.kedaScaledObject.authenticationRef.namespace | default $.Release.Namespace }}
 {{- end }}
 {{- end}}
