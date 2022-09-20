@@ -1,6 +1,6 @@
 # dafka-consumer
 
-![Version: 6.2.2](https://img.shields.io/badge/Version-6.2.2-informational?style=flat-square)
+![Version: 7.0.0](https://img.shields.io/badge/Version-7.0.0-informational?style=flat-square)
 
 A Helm Chart for Dafka Consumer
 
@@ -17,7 +17,7 @@ A Helm Chart for Dafka Consumer
 | target.baseUrl | string | `nil` | target base url |
 | target.port | int | `80` | target port |
 | target.healthcheck | string | `nil` | target healthcheck route |
-| target.topicsRoutes | string | `nil` | mapping of topics to corresponding routes in target |
+| target.topicsRoutes | {topic: string, route: string}[] | `nil` | mapping of topics to corresponding routes in target |
 | target.processingDelay | string | `nil` | adds delay before processing next record |
 | livenessProbe.initialDelaySeconds | int | `180` |  |
 | resources.requests.cpu | string | `"50m"` | cpu requests |
@@ -45,4 +45,8 @@ A Helm Chart for Dafka Consumer
 | auth.secrets.vault.truststoreSecretKey | string | `nil` | vault secret key for truststore file |
 | auth.secrets.vault.truststorePasswordSecretPath | string | `nil` | vault secret path for truststore password |
 | auth.secrets.vault.truststorePasswordSecretKey | string | `nil` | vault secret key for truststore password |
+| kedaScaledObject | object | `{"authenticationRef":{"name":null},"enabled":false}` | Keda [ScaledObject](https://keda.sh/docs/2.8/concepts/scaling-deployments/) configuration |
+| kedaScaledObject.enabled | bool | `false` | set to enabe scaled object support |
+| kedaScaledObject.authenticationRef | object | `{"name":null}` | A reference to [TriggerAuthentication](https://keda.sh/docs/2.8/concepts/authentication/) |
+| kedaScaledObject.authenticationRef.name | string | `nil` | The name of the TriggerAuthentication  |
 
