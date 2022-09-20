@@ -1,6 +1,6 @@
-{{- if .Values.scaledObject.enabled }}
+{{- if .Values.kedaScaledObject.enabled }}
 apiVersion: keda.sh/v1alpha1
-kind: ScaledObject
+kind: kedaScaledObject
 metadata:
   name: {{ .Release.Name }}-{{ .Values.name }}
 spec:
@@ -15,6 +15,7 @@ spec:
       consumerGroup: {{ $.Values.groupId | default $.Release.Name }}
       topic: {{ $topicRoute.topic }}
     authenticationRef:
-      name: {{ $.Values.scaledObject.authenticationRef }}
+      name: {{ $.Values.kedaScaledObject.authenticationRef.name }}
+      namespace: {{ $.Values.kedaScaledObject.authenticationRef.namespace | default $.Release.Namespace }}
 {{- end }}
 {{- end}}

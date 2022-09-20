@@ -23,7 +23,7 @@ target:
   port: 80
   # -- target healthcheck route
   healthcheck:
-  # -- mapping of topics to corresponding routes in target
+  # -- ({topic: string, route: string}[])mapping of topics to corresponding routes in target
   topicsRoutes:
   # -- adds delay before processing next record
   processingDelay:
@@ -93,5 +93,13 @@ auth:
       truststorePasswordSecretPath:
       # -- vault secret key for truststore password
       truststorePasswordSecretKey:
-scaledObject:
+# -- Keda [ScaledObject](https://keda.sh/docs/2.8/concepts/scaling-deployments/) configuration
+kedaScaledObject:
+  # -- set to enabe scaled object support
   enabled: false
+  # -- A reference to [TriggerAuthentication](https://keda.sh/docs/2.8/concepts/authentication/)
+  authenticationRef:
+    # -- The name of the TriggerAuthentication 
+    name:
+    # -- The namespace where it lives. If not set use `{{ .Release.Namespace }}`
+    namespace:
