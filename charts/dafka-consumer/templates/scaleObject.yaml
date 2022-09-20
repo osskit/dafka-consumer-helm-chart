@@ -12,7 +12,7 @@ spec:
   - type: kafka
     metadata:
       bootstrapServers: {{ $.Values.broker }}
-      consumerGroup: {{ $.Values.groupId | default $.Release.Name }}
+      consumerGroup: {{ $.Values.groupId | default $.Release.Name }}-keda
       topic: {{ $topicRoute.topic }}
     authenticationRef:
       name: {{ $.Values.kedaScaledObject.authenticationRef.name }}
