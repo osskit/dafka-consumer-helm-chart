@@ -93,3 +93,5 @@ auth:
       truststorePasswordSecretPath:
       # -- vault secret key for truststore password
       truststorePasswordSecretKey:
+scaledObject:
+  enabled: false
