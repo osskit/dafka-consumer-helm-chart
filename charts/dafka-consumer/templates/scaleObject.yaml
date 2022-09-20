@@ -1,6 +1,6 @@
 {{- if .Values.kedaScaledObject.enabled }}
 apiVersion: keda.sh/v1alpha1
-kind: kedaScaledObject
+kind: ScaledObject
 metadata:
   name: {{ .Release.Name }}-{{ .Values.name }}
 spec:
