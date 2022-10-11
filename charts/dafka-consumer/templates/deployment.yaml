@@ -79,6 +79,8 @@ spec:
             {{- end }}
             - name: USE_SASL_AUTH
               value: {{ .Values.auth.enabled | squote }}
+            - name: ROOT_LOG_LEVEL
+              value: {{ .Values.logLevel }}
         {{- if .Values.auth.enabled }}
             - name: SASL_USERNAME
               value: {{ .Values.auth.saslUsername }}

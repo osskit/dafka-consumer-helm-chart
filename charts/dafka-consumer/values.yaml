@@ -16,6 +16,9 @@ image:
   # -- the image tag to use
   tag: '6.0'
 
+# -- Allow to specify log level
+logLevel: WARN
+
 target:
   # -- target base url
   baseUrl:
