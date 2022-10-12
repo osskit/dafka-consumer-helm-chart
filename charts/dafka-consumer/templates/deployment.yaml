@@ -135,6 +135,10 @@ spec:
             driver: secrets-store.csi.k8s.io
             readOnly: true
             volumeAttributes:
+              {{- if .Values.auth.secretProviderClassName }}
+              secretProviderClass: {{ .Values.auth.secretProviderClassName }}
+              {{- else }}
               secretProviderClass: {{ .Release.Name }}-kafka-consumer
+              {{ end }}
   {{ end }}
 {{ end }}
