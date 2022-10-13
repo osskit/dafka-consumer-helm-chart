@@ -7,7 +7,7 @@ spec:
   scaleTargetRef:
     name: {{ .Release.Name }}-{{ .Values.name }}
   pollingInterval: 30
-{{- if .Values.scaledObject.maxReplicaCount }}
+{{- if .Values.kedaScaledObject.maxReplicaCount }}
   maxReplicaCount: {{ .Values.kedaScaledObject.maxReplicaCount }}
 {{- end }}  
   triggers:
