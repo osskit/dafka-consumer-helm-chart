@@ -7,6 +7,9 @@ spec:
   scaleTargetRef:
     name: {{ .Release.Name }}-{{ .Values.name }}
   pollingInterval: 30
+{{- if .Values.scaledObject.maxReplicaCount }}
+  maxReplicaCount: {{ .Values.kedaScaledObject.maxReplicaCount }}
+{{- end }}  
   triggers:
 {{- range $topicRoute := .Values.target.topicsRoutes}}
   - type: kafka
