@@ -5,7 +5,7 @@ name: kafka-consumer
 port: &port 3000
 
 # -- the url of the kafka broker
-broker: 
+broker:
 
 # -- pod count
 replicaCount: 1
@@ -14,7 +14,7 @@ image:
   # -- the image name to use
   name: osskit/dafka-consumer
   # -- the image tag to use
-  tag: '6.0'
+  tag: '6.1'
 
 # -- Allow to specify log level
 logLevel: WARN
@@ -82,7 +82,7 @@ auth:
       # -- aws secret object name for truststore
       saslTruststoreObjectName:
       # -- aws secret object name for truststore password
-      saslTruststorePasswordObjectName:      
+      saslTruststorePasswordObjectName:
     vault:
       # -- vault secret path for sasl password
       saslPasswordSecretPath:
@@ -102,5 +102,5 @@ kedaScaledObject:
   enabled: false
   # -- A reference to [TriggerAuthentication](https://keda.sh/docs/2.8/concepts/authentication/)
   authenticationRef:
-    # -- The name of the TriggerAuthentication 
+    # -- The name of the TriggerAuthentication
     name:

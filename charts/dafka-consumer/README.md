@@ -1,6 +1,6 @@
 # dafka-consumer
 
-![Version: 7.0.2](https://img.shields.io/badge/Version-7.0.2-informational?style=flat-square)
+![Version: 7.0.7](https://img.shields.io/badge/Version-7.0.7-informational?style=flat-square)
 
 A Helm Chart for Dafka Consumer
 
@@ -13,7 +13,7 @@ A Helm Chart for Dafka Consumer
 | broker | string | `nil` | the url of the kafka broker |
 | replicaCount | int | `1` | pod count |
 | image.name | string | `"osskit/dafka-consumer"` | the image name to use |
-| image.tag | string | `"6.0"` | the image tag to use |
+| image.tag | string | `"6.1"` | the image tag to use |
 | logLevel | string | `"WARN"` | Allow to specify log level |
 | target.baseUrl | string | `nil` | target base url |
 | target.port | int | `80` | target port |
@@ -49,5 +49,5 @@ A Helm Chart for Dafka Consumer
 | kedaScaledObject | object | `{"authenticationRef":{"name":null},"enabled":false}` | Keda [ScaledObject](https://keda.sh/docs/2.8/concepts/scaling-deployments/) configuration |
 | kedaScaledObject.enabled | bool | `false` | set to enabe scaled object support |
 | kedaScaledObject.authenticationRef | object | `{"name":null}` | A reference to [TriggerAuthentication](https://keda.sh/docs/2.8/concepts/authentication/) |
-| kedaScaledObject.authenticationRef.name | string | `nil` | The name of the TriggerAuthentication  |
+| kedaScaledObject.authenticationRef.name | string | `nil` | The name of the TriggerAuthentication |
 
