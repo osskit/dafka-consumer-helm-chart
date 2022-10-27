@@ -1,6 +1,6 @@
 # dafka-consumer
 
-![Version: 7.0.6](https://img.shields.io/badge/Version-7.0.6-informational?style=flat-square)
+![Version: 7.0.7](https://img.shields.io/badge/Version-7.0.7-informational?style=flat-square)
 
 A Helm Chart for Dafka Consumer
 
@@ -49,5 +49,5 @@ A Helm Chart for Dafka Consumer
 | kedaScaledObject | object | `{"authenticationRef":{"name":null},"enabled":false}` | Keda [ScaledObject](https://keda.sh/docs/2.8/concepts/scaling-deployments/) configuration |
 | kedaScaledObject.enabled | bool | `false` | set to enabe scaled object support |
 | kedaScaledObject.authenticationRef | object | `{"name":null}` | A reference to [TriggerAuthentication](https://keda.sh/docs/2.8/concepts/authentication/) |
-| kedaScaledObject.authenticationRef.name | string | `nil` | The name of the TriggerAuthentication  |
+| kedaScaledObject.authenticationRef.name | string | `nil` | The name of the TriggerAuthentication |
 
