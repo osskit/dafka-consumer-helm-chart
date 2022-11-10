@@ -107,9 +107,9 @@ kedaScaledObject:
 
 # -- [PodMonitor](https://github.com/prometheus-operator/prometheus-operator/blob/main/Documentation/api.md#monitoring.coreos.com/v1.podMonitor) configuration
 podMonitor:
-  # -- set to enabe service monitor support
+  # -- set to enabe pod monitor support
   enabled: false
-  # -- set labels for the service monitor
+  # -- set labels for the pod monitor
   labels: {}
-  # -- set sample limit for the service monitor
+  # -- set sample limit for the pod monitor
   sampleLimit: 
