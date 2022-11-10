@@ -1,6 +1,6 @@
 # dafka-consumer
 
-![Version: 7.0.8](https://img.shields.io/badge/Version-7.0.8-informational?style=flat-square)
+![Version: 7.0.9](https://img.shields.io/badge/Version-7.0.9-informational?style=flat-square)
 
 A Helm Chart for Dafka Consumer
 
@@ -50,4 +50,8 @@ A Helm Chart for Dafka Consumer
 | kedaScaledObject.enabled | bool | `false` | set to enabe scaled object support |
 | kedaScaledObject.authenticationRef | object | `{"name":null}` | A reference to [TriggerAuthentication](https://keda.sh/docs/2.8/concepts/authentication/) |
 | kedaScaledObject.authenticationRef.name | string | `nil` | The name of the TriggerAuthentication |
+| podMonitor | object | `{"enabled":false,"labels":{},"sampleLimit":null}` | [PodMonitor](https://github.com/prometheus-operator/prometheus-operator/blob/main/Documentation/api.md#monitoring.coreos.com/v1.podMonitor) configuration |
+| podMonitor.enabled | bool | `false` | set to enabe pod monitor support |
+| podMonitor.labels | object | `{}` | set labels for the pod monitor |
+| podMonitor.sampleLimit | string | `nil` | set sample limit for the pod monitor |
 
