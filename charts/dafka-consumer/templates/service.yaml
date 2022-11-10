@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ .Release.Name }}-kafka-consumer
+  labels:
+    app: {{ .Release.Name }}-kafka-consumer
+spec:
+  selector:
+    app: {{ .Release.Name }}-kafka-consumer
+  type: ClusterIP
+  ports:
+    - name: main
+      port: 80
+      protocol: TCP
+      targetPort: {{ .Values.port }}
