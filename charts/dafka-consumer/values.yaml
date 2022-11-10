@@ -105,8 +105,8 @@ kedaScaledObject:
     # -- The name of the TriggerAuthentication
     name:
 
-# -- [ServiceMonitor](https://github.com/prometheus-operator/prometheus-operator/blob/main/Documentation/api.md#monitoring.coreos.com/v1.ServiceMonitor) configuration
-serviceMonitor:
+# -- [PodMonitor](https://github.com/prometheus-operator/prometheus-operator/blob/main/Documentation/api.md#monitoring.coreos.com/v1.podMonitor) configuration
+podMonitor:
   # -- set to enabe service monitor support
   enabled: false
   # -- set labels for the service monitor
