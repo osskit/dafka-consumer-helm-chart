@@ -12,7 +12,7 @@ spec:
     matchLabels:
       app: {{ .Release.Name }}-kafka-consumer
   podMetricsEndpoints:
-  - port: containerPort
+  - port: main
 {{ if .Values.podMonitor.sampleLimit }}
   sampleLimit: {{ .Values.podMonitor.sampleLimit }}
 {{ end }}
