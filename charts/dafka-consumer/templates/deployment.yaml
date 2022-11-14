@@ -38,6 +38,7 @@ spec:
 {{ end }}
           ports:
             - containerPort: {{ .Values.port }}
+              name: main
           env:
             - name: KAFKA_BROKER
               value: {{ .Values.broker }}
