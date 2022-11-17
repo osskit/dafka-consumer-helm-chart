@@ -1,0 +1,16 @@
+{{ if .Values.alerting.enabled }}
+apiVersion: monitoring.coreos.com/v1
+kind: PrometheusRule
+metadata:
+  {{- if .Values.alerting.labels }}
+  labels:
+  {{ toYaml .Values.alerting.labels | nindent 4 }}
+  {{- end }}
+  name: {{ .Release.Name }}-{{ .Values.name }}
+spec:
+  groups:
+  - name: ./{{ .Release.Name }}-{{ .Values.name }}
+    rules:
+    - alert: Kafka Consumer Group Missing
+      expr: absent(kafka_consumer_group_offset{name="{{ .Values.groupId | default .Release.Name }}"})
+{{ end }}
