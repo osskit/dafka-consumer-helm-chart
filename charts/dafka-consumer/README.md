@@ -19,7 +19,7 @@ A Helm Chart for Dafka Consumer
 | target.baseUrl | string | `nil` | target base url |
 | target.port | int | `80` | target port |
 | target.healthcheck | string | `nil` | target healthcheck route |
-| target.topicsRoutes | {topic: string, route: string}[] | `nil` | apping of topics to corresponding routes in target |
+| target.topicsRoutes | {topic: string, route: string}[] | `nil` | mapping of topics to corresponding routes in target |
 | target.processingDelay | string | `nil` | adds delay before processing next record |
 | livenessProbe.initialDelaySeconds | int | `180` |  |
 | resources.requests.cpu | string | `"50m"` | cpu requests |
