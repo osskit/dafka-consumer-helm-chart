@@ -29,7 +29,7 @@ target:
   port: 80
   # -- target healthcheck route
   healthcheck:
-  # -- ({topic: string, route: string}[])mapping of topics to corresponding routes in target
+  # -- ({topic: string, route: string}[]) mapping of topics to corresponding routes in target
   topicsRoutes:
   # -- adds delay before processing next record
   processingDelay:
