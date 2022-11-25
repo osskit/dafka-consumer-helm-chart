@@ -17,10 +17,10 @@ jobs:
           token: ${{ secrets.REPO_TOKEN }}
 
       - name: Install Helm Docs
-          uses: envoy/install-helm-docs@v1.0.0
-          with:
-            # Helm Docs Version to install (Mandatory)
-            version: 1.7.0          
+        uses: envoy/install-helm-docs@v1.0.0
+        with:
+          # Helm Docs Version to install (Mandatory)
+          version: 1.7.0          
 
       - name: Run helm-docs
         working-directory: charts/dafka-consumer
