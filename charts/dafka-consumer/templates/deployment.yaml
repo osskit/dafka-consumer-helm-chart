@@ -1,3 +1,4 @@
+{{ if not .Values.disabled }}
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -6,7 +7,7 @@ spec:
   strategy:
     rollingUpdate:
       maxUnavailable: 0
-  replicas: {{ .Values.disabled | ternary 0 .Values.replicaCount }}
+  replicas: {{ .Values.replicaCount  }}
   selector:
       matchLabels:
         app: {{ .Release.Name }}-kafka-consumer
@@ -142,4 +143,5 @@ spec:
               secretProviderClass: {{ .Release.Name }}-kafka-consumer
               {{ end }}
   {{ end }}
+{{ end }}
 {{ end }}

@@ -1,4 +1,4 @@
-# -- disable consumer. this will scale down the amount of pods to zero, useful when you need the consumer group to be inactive (i.e in order to reset offsets)
+# -- disable consumer. this remove the deployment and all the pods, useful when you need the consumer group to be inactive (i.e in order to reset offsets)
 disabled: false
 
 # -- name for this consumer
