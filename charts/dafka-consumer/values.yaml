@@ -1,3 +1,6 @@
+# -- disable consumer. this remove the deployment and all the pods, useful when you need the consumer group to be inactive (i.e in order to reset offsets)
+disable: false
+
 # -- name for this consumer
 name: kafka-consumer
 
@@ -26,7 +29,7 @@ target:
   port: 80
   # -- target healthcheck route
   healthcheck:
-  # -- ({topic: string, route: string}[])mapping of topics to corresponding routes in target
+  # -- ({topic: string, route: string}[]) mapping of topics to corresponding routes in target
   topicsRoutes:
   # -- adds delay before processing next record
   processingDelay:

@@ -1,3 +1,4 @@
+{{ if not .Values.disable }}
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -142,4 +143,5 @@ spec:
               secretProviderClass: {{ .Release.Name }}-kafka-consumer
               {{ end }}
   {{ end }}
+{{ end }}
 {{ end }}
