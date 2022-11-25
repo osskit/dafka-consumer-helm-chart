@@ -6,7 +6,7 @@ spec:
   strategy:
     rollingUpdate:
       maxUnavailable: 0
-  replicas: {{ .Values.replicaCount }}
+  replicas: {{ .Values.disabled | ternary 0 .Values.replicaCount }}
   selector:
       matchLabels:
         app: {{ .Release.Name }}-kafka-consumer

@@ -1,4 +1,4 @@
-{{- if .Values.kedaScaledObject.enabled }}
+{{- if (and (not .Values.disabled) .Values.kedaScaledObject.enabled) }}
 apiVersion: keda.sh/v1alpha1
 kind: ScaledObject
 metadata:
