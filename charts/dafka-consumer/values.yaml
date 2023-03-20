@@ -118,7 +118,7 @@ podMonitor:
 
 # -- [PrometheusRule](https://github.com/prometheus-operator/prometheus-operator/blob/main/Documentation/api.md#monitoring.coreos.com/v1.PrometheusRule) configuration
 alerting:
-  # -- set to enabe prometheus rule support
+  # -- set to enable prometheus rule support
   enabled: false
   # -- set labels for prometheus rule
   labels: {}
