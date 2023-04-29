@@ -1,6 +1,6 @@
 # dafka-consumer
 
-![Version: 7.1.0](https://img.shields.io/badge/Version-7.1.0-informational?style=flat-square)
+![Version: 7.2.0](https://img.shields.io/badge/Version-7.2.0-informational?style=flat-square)
 
 A Helm Chart for Dafka Consumer
 
