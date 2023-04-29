@@ -18,6 +18,6 @@ spec:
       name: {{ .Release.Name }}-kafka-consumer-keda-secrets
       key: tls
     - parameter: ca
-      name: {{ .Values.kedaScaledObject.caSecretName }}
-      key: {{ .Values.kedaScaledObject.caSecretKey }}
+      name: {{ .Values.kedaScaledObject.authenticationRef.caSecretName }}
+      key: {{ .Values.kedaScaledObject.authenticationRef.caSecretKey }}
 {{- end }}
