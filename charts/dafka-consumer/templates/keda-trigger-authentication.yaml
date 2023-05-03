@@ -2,7 +2,7 @@
 apiVersion: keda.sh/v1alpha1
 kind: TriggerAuthentication
 metadata:
-  name: {{ .Release.Name }}
+  name: {{ .Release.Name }}-kafka-consumer
 spec:
   secretTargetRef:
     - parameter: sasl
