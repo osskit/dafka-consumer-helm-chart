@@ -79,6 +79,10 @@ spec:
             - name: TARGET_TIMEOUT_MS
               value: {{ .Values.targetTimeoutMs | squote }}
             {{- end }}
+            {{- if .Values.sessionTimeoutMs }}
+            - name: SESSION_TIMEOUT
+              value: {{ .Values.sessionTimeoutMs | squote }}
+            {{- end }}            
             - name: USE_SASL_AUTH
               value: {{ .Values.auth.enabled | squote }}
             - name: ROOT_LOG_LEVEL
