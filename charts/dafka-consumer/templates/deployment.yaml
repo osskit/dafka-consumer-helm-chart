@@ -56,7 +56,11 @@ spec:
             {{- if .Values.retry  }}
             - name: RETRY_TOPIC
               value: {{ .Values.retry.topic | default (printf "%s-retry" .Release.Name) }}
+             {{- if .Values.retry.whenStatusCodeMatch }}
+            - name: PRODUCE_TO_RETRY_TOPIC_WHEN_STATUS_CODE_MATCH
+              value: {{ .Values.retry.whenStatusCodeMatch | squote }}
             {{- end }}
+             {{- end }}
             {{- if .Values.deadLetter }}
             - name: DEAD_LETTER_TOPIC
               value: {{ .Values.deadLetter.topic | default (printf "%s-dead-letter" .Release.Name) }}
