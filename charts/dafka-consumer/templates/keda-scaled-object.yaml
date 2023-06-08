@@ -14,14 +14,14 @@ spec:
   maxReplicaCount: {{ .Values.kedaScaledObject.maxReplicaCount }}
 {{- end }}  
   triggers:
-{{- range $topicRoute := .Values.target.topicsRoutes}}
   - type: kafka
     metadata:
       bootstrapServers: {{ $.Values.broker }}
       consumerGroup: {{ $.Values.groupId | default $.Release.Name }}
-      topic: {{ $topicRoute.topic }}
+      {{- if .Values.kedaScaledObject.topic }}      
+      topic: {{ .Values.kedaScaledObject.topic }}
+      {{- end}}
       scaleToZeroOnInvalidOffset: {{ $.Values.kedaScaledObject.scaleToZeroOnInvalidOffset | squote }}
     authenticationRef:
       name: {{ $.Values.kedaScaledObject.authenticationRef.name }}
-{{- end }}
 {{- end}}
