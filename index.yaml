@@ -2,6 +2,14 @@ apiVersion: v1
 entries:
   dafka-consumer:
   - apiVersion: v1
+    created: "2023-06-08T07:22:12.540874216Z"
+    description: A Helm Chart for Dafka Consumer
+    digest: 0282fa6578e9e1e20f58af096d99fc0e3b85d0626deb46db7ef203089af29d49
+    name: dafka-consumer
+    urls:
+    - https://github.com/osskit/dafka-consumer-helm-chart/releases/download/dafka-consumer-7.2.5/dafka-consumer-7.2.5.tgz
+    version: 7.2.5
+  - apiVersion: v1
     created: "2023-06-07T06:59:50.704982588Z"
     description: A Helm Chart for Dafka Consumer
     digest: 9cb5aea18743ad1f79ac227919747ec543fb8e8f437ea93418816a57b023f24f
@@ -281,4 +289,4 @@ entries:
     urls:
     - https://github.com/osskit/dafka-consumer-helm-chart/releases/download/dafka-consumer-3.0.0/dafka-consumer-3.0.0.tgz
     version: 3.0.0
-generated: "2023-06-07T06:59:50.70546752Z"
+generated: "2023-06-08T07:22:12.541380337Z"
