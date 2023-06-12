@@ -122,3 +122,6 @@ podMonitor:
 pdb:
   # -- Set to true to enable
   enabled: false
+
+# -- Extra envs to add to pod
+env:
