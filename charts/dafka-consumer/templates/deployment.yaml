@@ -86,7 +86,15 @@ spec:
             {{- if .Values.sessionTimeoutMs }}
             - name: SESSION_TIMEOUT
               value: {{ .Values.sessionTimeoutMs | squote }}
-            {{- end }}            
+            {{- end }}      
+            {{- if .Values.retryPolicyMaxDurationMs }}
+            - name: RETRY_POLICY_MAX_DURATION_MS
+              value: {{ .Values.retryPolicyMaxDurationMs | squote }}
+            {{- end }}    
+            {{- if .Values.kafkaPollIntervalMs }}
+            - name: KAFKA_POLL_INTERVAL_MS
+              value: {{ .Values.kafkaPollIntervalMs | squote }}
+            {{- end }}     
             - name: USE_SASL_AUTH
               value: {{ .Values.auth.enabled | squote }}
             - name: ROOT_LOG_LEVEL
