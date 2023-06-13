@@ -122,3 +122,6 @@ podMonitor:
 pdb:
   # -- Set to true to enable
   enabled: false
+
+jvmOpts:
+  maxRAMPercentage: 70.0
