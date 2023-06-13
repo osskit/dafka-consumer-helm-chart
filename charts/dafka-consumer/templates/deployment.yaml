@@ -41,6 +41,10 @@ spec:
             - containerPort: {{ .Values.port }}
               name: main
           env:
+            {{ if .Values.jvmOpts }}
+            - name: JAVA_OPTS
+              value: "-XX:MaxRAMPercentage={{ .Values.jvmOpts.maxRAMPercentage }}{{ if .Values.jvmOpts.activeProcessorCount }} -XX:ActiveProcessorCount={{ .Values.jvmOpts.activeProcessorCount }} {{end}}"
+            {{ end }}
             - name: KAFKA_BROKER
               value: {{ .Values.broker }}
             - name: GROUP_ID
