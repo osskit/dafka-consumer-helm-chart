@@ -1,4 +1,5 @@
-{{- if and .Values.kedaScaledObject.enabled }}
+{{- if .Values.kedaScaledObject.enabled }}
+{{- if not .Values.kedaScaledObject.authenticationRef.name }}
 apiVersion: keda.sh/v1alpha1
 kind: TriggerAuthentication
 metadata:
@@ -20,4 +21,5 @@ spec:
     - parameter: ca
       name: {{ .Values.kedaScaledObject.authenticationRef.caSecretName }}
       key: {{ .Values.kedaScaledObject.authenticationRef.caSecretKey }}
+{{- end }}
 {{- end }}
