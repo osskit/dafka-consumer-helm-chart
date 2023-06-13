@@ -23,5 +23,9 @@ spec:
       {{- end}}
       scaleToZeroOnInvalidOffset: {{ $.Values.kedaScaledObject.scaleToZeroOnInvalidOffset | squote }}
     authenticationRef:
-      name: {{ $.Values.kedaScaledObject.authenticationRef.name }}
+{{- if .Values.kedaScaledObject.authenticationRef.name }}
+      name: {{  .Values.kedaScaledObject.authenticationRef.name }}
+{{ else }}
+      name: {{ .Release.Name }}-{{ .Values.name }}
+{{ end }}
 {{- end}}
