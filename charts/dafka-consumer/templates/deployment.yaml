@@ -43,7 +43,7 @@ spec:
           env:
             {{ if .Values.jvmOpts }}
             - name: JAVA_OPTS
-              value: "-XX:MaxRAMPercentage={{ .Values.jvmOpts.maxRAMPercentage }}{{ if .Values.jvmOpts.activeProcessorCount }} -XX:ActiveProcessorCount={{ .Values.jvmOpts.activeProcessorCount }} {{end}}"
+              value: {{ .Values.jvmOpts | squote }}
             {{ end }}
             - name: KAFKA_BROKER
               value: {{ .Values.broker }}
