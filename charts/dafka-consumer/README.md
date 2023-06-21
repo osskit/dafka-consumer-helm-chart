@@ -4,6 +4,12 @@
 
 A Helm Chart for Dafka Consumer
 
+## Important Notice
+
+Java ignores the default DNS cache instruction returned from the DNS server (see this [doc](https://docs.aws.amazon.com/sdk-for-java/v1/developer-guide/java-dg-jvm-ttl.html)).
+
+It is highly recomended to override this by setting `jvmOpts`. See this [Stack Overflow Answer](https://stackoverflow.com/a/17219327)
+
 ## Values
 
 | Key | Type | Default | Description |
