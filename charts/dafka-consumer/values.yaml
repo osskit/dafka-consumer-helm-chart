@@ -35,7 +35,9 @@ target:
   processingDelay:
 
 livenessProbe:
-  initialDelaySeconds: 180
+  initialDelaySeconds: 300
+  failureThreshold: 3
+  periodSeconds: 30
 
 resources:
   requests:
