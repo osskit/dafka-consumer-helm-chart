@@ -1,6 +1,6 @@
 # dafka-consumer
 
-![Version: 7.4.0](https://img.shields.io/badge/Version-7.4.0-informational?style=flat-square)
+![Version: 7.4.1](https://img.shields.io/badge/Version-7.4.1-informational?style=flat-square)
 
 A Helm Chart for Dafka Consumer
 
@@ -21,7 +21,9 @@ A Helm Chart for Dafka Consumer
 | target.healthcheck | string | `nil` | target healthcheck route |
 | target.topicsRoutes | {topic: string, route: string}[] | `nil` | mapping of topics to corresponding routes in target |
 | target.processingDelay | string | `nil` | adds delay before processing next record |
-| livenessProbe.initialDelaySeconds | int | `180` |  |
+| livenessProbe.initialDelaySeconds | int | `300` |  |
+| livenessProbe.failureThreshold | int | `3` |  |
+| livenessProbe.periodSeconds | int | `30` |  |
 | resources.requests.cpu | string | `"50m"` | cpu requests |
 | resources.requests.memory | string | `"100Mi"` | memory requests |
 | resources.limits.cpu | string | `"200m"` | cpu limits |
