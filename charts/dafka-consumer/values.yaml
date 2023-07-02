@@ -34,9 +34,6 @@ target:
   # -- adds delay before processing next record
   processingDelay:
 
-  # -- adds the following body objects to the record headers
-bodyHeadersPaths: 'foo,bar'
-
 livenessProbe:
   initialDelaySeconds: 300
   failureThreshold: 3
