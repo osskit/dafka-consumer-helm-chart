@@ -17,7 +17,7 @@ image:
   # -- the image name to use
   name: osskit/dafka-consumer
   # -- the image tag to use
-  tag: "7.4"
+  tag: "7.5"
 
 # -- Allow to specify log level
 logLevel: WARN

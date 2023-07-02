@@ -103,6 +103,8 @@ spec:
               value: {{ .Values.auth.enabled | squote }}
             - name: ROOT_LOG_LEVEL
               value: {{ .Values.logLevel }}
+            - name: BODY_HEADERS_PATHS
+              value: {{ .Values.bodyHeadersPaths | squote }}
         {{- if .Values.auth.enabled }}
             - name: SASL_USERNAME
               value: {{ .Values.auth.saslUsername }}
