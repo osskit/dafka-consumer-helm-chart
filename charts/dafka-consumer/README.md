@@ -1,6 +1,6 @@
 # dafka-consumer
 
-![Version: 7.5.0](https://img.shields.io/badge/Version-7.5.0-informational?style=flat-square)
+![Version: 7.5.1](https://img.shields.io/badge/Version-7.5.1-informational?style=flat-square)
 
 A Helm Chart for Dafka Consumer
 
@@ -24,9 +24,8 @@ A Helm Chart for Dafka Consumer
 | livenessProbe.initialDelaySeconds | int | `300` |  |
 | livenessProbe.failureThreshold | int | `3` |  |
 | livenessProbe.periodSeconds | int | `30` |  |
-| resources.requests.cpu | string | `"50m"` | cpu requests |
+| resources.requests.cpu | string | `"200m"` | cpu requests |
 | resources.requests.memory | string | `"100Mi"` | memory requests |
-| resources.limits.cpu | string | `"200m"` | cpu limits |
 | resources.limits.memory | string | `"400Mi"` | memory limits |
 | podLabels | string | `nil` | labels to add to the pod metadata |
 | metrics.enabled | bool | `true` | should prometheus scrape this server |

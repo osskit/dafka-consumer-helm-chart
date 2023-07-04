@@ -42,14 +42,12 @@ livenessProbe:
 resources:
   requests:
     # -- cpu requests
-    cpu: "50m"
+    cpu: 200m
     # -- memory requests
-    memory: "100Mi"
+    memory: 100Mi
   limits:
-    # -- cpu limits
-    cpu: "200m"
     # -- memory limits
-    memory: "400Mi"
+    memory: 400Mi
 
 # -- labels to add to the pod metadata
 podLabels:
