@@ -142,11 +142,11 @@ spec:
          {{ if .Values.connectionPool}}
             {{ if hasKey .Values.connectionPool "maxIdle"}}
             - name: CONNECTION_POOL_MAX_IDLE_CONNECTIONS
-              value: {{ .Values.connectionPool.maxIdle }}
+              value: {{ .Values.connectionPool.maxIdle | squote }}
             {{ end }}
             {{ if hasKey .Values.connectionPool "keepAliveDurationMS"}}
             - name: CONNECTION_POOL_KEEP_ALIVE_DURATION_MS
-              value: {{ .Values.connectionPool.keepAliveDurationMS }}
+              value: {{ .Values.connectionPool.keepAliveDurationMS  | squote }}
             {{ end }}
             {{ end }}
           livenessProbe:
