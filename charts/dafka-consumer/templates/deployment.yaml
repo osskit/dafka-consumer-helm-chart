@@ -149,6 +149,14 @@ spec:
               value: {{ .Values.connectionPool.keepAliveDurationMS  | squote }}
             {{ end }}
             {{ end }}
+            {{ if .Values.retryPolicyExponentialBackoff}}
+            - name: RETRY_POLICY_EXPONENTIAL_BACKOFF
+              value: {{ .Values.retryPolicyExponentialBackoff }}
+            {{ end }}
+            {{ if .Values.retryPolicyMaxRetries}}
+            - name: RETRY_POLICY_MAX_RETRIES
+              value: {{ .Values.retryPolicyMaxRetries }}
+            {{ end }}
           livenessProbe:
             httpGet:
               path: /alive
@@ -180,3 +188,4 @@ spec:
   {{ end }}
 {{ end }}
 {{ end }}
+
