@@ -34,10 +34,14 @@ target:
   # -- adds delay before processing next record
   processingDelay:
 
+startupProbe:
+  failureThreshold: 10
+  periodSeconds: 30 
+
 livenessProbe:
-  initialDelaySeconds: 300
-  failureThreshold: 3
-  periodSeconds: 30
+  initialDelaySeconds: 10
+  failureThreshold: 2
+  periodSeconds: 5
 
 resources:
   requests:
