@@ -26,7 +26,7 @@ A Helm Chart for Dafka Consumer
 | livenessProbe.initialDelaySeconds | int | `10` |  |
 | livenessProbe.failureThreshold | int | `2` |  |
 | livenessProbe.periodSeconds | int | `5` |  |
-| resources.requests.cpu | string | `"200m"` | cpu requests |
+| resources.requests.cpu | string | `"100m"` | cpu requests |
 | resources.requests.memory | string | `"100Mi"` | memory requests |
 | resources.limits.memory | string | `"400Mi"` | memory limits |
 | podLabels | string | `nil` | labels to add to the pod metadata |
