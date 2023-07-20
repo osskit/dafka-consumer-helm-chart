@@ -136,7 +136,7 @@ spec:
             - name: TRUSTSTORE_PASSWORD_FILE_PATH
               value: /secrets-files/TRUSTSTORE_PASSWORD
             {{- end }}
-            {{- end }}          
+            {{- end }}
         {{- end }}
          {{ if .Values.connectionPool}}
             {{ if hasKey .Values.connectionPool "maxIdle"}}
