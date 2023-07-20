@@ -21,9 +21,11 @@ A Helm Chart for Dafka Consumer
 | target.healthcheck | string | `nil` | target healthcheck route |
 | target.topicsRoutes | {topic: string, route: string}[] | `nil` | mapping of topics to corresponding routes in target |
 | target.processingDelay | string | `nil` | adds delay before processing next record |
-| livenessProbe.initialDelaySeconds | int | `300` |  |
-| livenessProbe.failureThreshold | int | `3` |  |
-| livenessProbe.periodSeconds | int | `30` |  |
+| startupProbe.failureThreshold | int | `10` |  |
+| startupProbe.periodSeconds | int | `30` |  |
+| livenessProbe.initialDelaySeconds | int | `10` |  |
+| livenessProbe.failureThreshold | int | `2` |  |
+| livenessProbe.periodSeconds | int | `5` |  |
 | resources.requests.cpu | string | `"200m"` | cpu requests |
 | resources.requests.memory | string | `"100Mi"` | memory requests |
 | resources.limits.memory | string | `"400Mi"` | memory limits |
