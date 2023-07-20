@@ -149,19 +149,22 @@ spec:
               value: {{ .Values.connectionPool.keepAliveDurationMS  | squote }}
             {{ end }}
             {{ end }}
+          startupProbe:
+            httpGet:
+              path: /alive
+              port: {{ .Values.port }}
+            failureThreshold:  {{ .Values.startupProbe.failureThreshold }}
+            periodSeconds: {{ .Values.startupProbe.periodSeconds }}            
           livenessProbe:
             httpGet:
               path: /alive
               port: {{ .Values.port }}
-            initialDelaySeconds: {{ .Values.livenessProbe.initialDelaySeconds }}
             failureThreshold:  {{ .Values.livenessProbe.failureThreshold }}
             periodSeconds: {{ .Values.livenessProbe.periodSeconds }}
           readinessProbe:
             httpGet:
               path: /ready
               port: {{ .Values.port }}
-          startupProbe:
-{{ toYaml .Values.startupProbe | indent 12 }}
           resources:
 {{ toYaml .Values.resources | indent 12 }}
 {{ if .Values.auth.enabled }}
