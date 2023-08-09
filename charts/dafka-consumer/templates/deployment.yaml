@@ -51,7 +51,7 @@ spec:
               value: {{ .Values.groupId | default .Release.Name }}
             {{ if .Values.target.port }}
             - name: TARGET_PORT
-              value: {{ .Values.target.port }}
+              value: {{ .Values.target.port | squote }}
             {{ end }}
             {{ if .Values.target.useK8sServiceHostName }}
             - name: K8S_SERVICE_HOST_ENV_VAR
