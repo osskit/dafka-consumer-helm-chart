@@ -151,11 +151,11 @@ spec:
             {{ end }}
             {{ if .Values.retryPolicyExponentialBackoff}}
             - name: RETRY_POLICY_EXPONENTIAL_BACKOFF
-              value: {{ .Values.retryPolicyExponentialBackoff }}
+              value: {{ .Values.retryPolicyExponentialBackoff | squote }}
             {{ end }}
             {{ if .Values.retryPolicyMaxRetries}}
             - name: RETRY_POLICY_MAX_RETRIES
-              value: {{ .Values.retryPolicyMaxRetries }}
+              value: {{ .Values.retryPolicyMaxRetries | squote }}
             {{ end }}
           livenessProbe:
             httpGet:
