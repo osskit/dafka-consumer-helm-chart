@@ -53,9 +53,9 @@ spec:
             - name: TARGET_PORT
               value: {{ .Values.target.port }}
             {{ end }}
-            {{ if .Values.target.serviceNameEnvVar }}
-            - name: TARGET_SERVICE_NAME_ENV_VAR
-              value: {{ .Values.target.serviceNameEnvVar }}
+            {{ if .Values.target.useK8sServiceHostName }}
+            - name: K8S_SERVICE_HOST_ENV_VAR
+              value: {{ printf "%s_SERVICE_HOST" (.Release.Name | upper | replace "-" "_") }}
             {{ else }}
             - name: TARGET_BASE_URL
               value: {{ .Values.target.baseUrl | default (printf "http://%s" .Release.Name) }}:{{ .Values.target.port }}
