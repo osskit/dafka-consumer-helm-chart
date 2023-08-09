@@ -49,8 +49,17 @@ spec:
               value: {{ .Values.broker }}
             - name: GROUP_ID
               value: {{ .Values.groupId | default .Release.Name }}
+            {{ if .Values.target.port }}
+            - name: TARGET_PORT
+              value: {{ .Values.target.port }}
+            {{ end }}
+            {{ if .Values.target.useK8sServiceHostName }}
+            - name: K8S_SERVICE_HOST_ENV_VAR
+              value: {{ printf "%s_SERVICE_HOST" (.Release.Name | upper | replace "-" "_") }}
+            {{ else }}
             - name: TARGET_BASE_URL
               value: {{ .Values.target.baseUrl | default (printf "http://%s" .Release.Name) }}:{{ .Values.target.port }}
+            {{ end }}
             - name: TOPICS_ROUTES
               value: {{ range $index, $topicRoute := .Values.target.topicsRoutes }}{{- if eq $index 0}} {{- else}},{{- end}}{{ $topicRoute.topic }}:{{ $topicRoute.route }}{{- end}}
             {{- if .Values.target.healthcheck  }}
