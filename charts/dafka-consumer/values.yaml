@@ -27,6 +27,8 @@ target:
   baseUrl:
   # -- target port
   port: 80
+  # -- use k8s service host name (without going through cluster DNS)
+  useK8sServiceHostName: true  
   # -- target healthcheck route
   healthcheck:
   # -- ({topic: string, route: string}[]) mapping of topics to corresponding routes in target
