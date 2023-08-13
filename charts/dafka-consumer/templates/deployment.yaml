@@ -170,7 +170,7 @@ spec:
               path: /alive
               port: {{ .Values.port }}
             failureThreshold:  {{ .Values.startupProbe.failureThreshold }}
-            periodSeconds: {{ .Values.startupProbe.periodSeconds }}              
+            periodSeconds: {{ .Values.startupProbe.periodSeconds }}
           livenessProbe:
             httpGet:
               path: /alive
