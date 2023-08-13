@@ -22,7 +22,7 @@ image:
 # -- Allow to specify log level
 logLevel: WARN
 
-retryPolicyExponentialBackoff: '50,30000,2'
+retryPolicyExponentialBackoff: 50,30000,2
 
 target:
   # -- target base url

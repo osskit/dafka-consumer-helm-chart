@@ -156,13 +156,7 @@ spec:
             - name: CONNECTION_POOL_KEEP_ALIVE_DURATION_MS
               value: {{ .Values.connectionPool.keepAliveDurationMS  | squote }}
             {{ end }}
-            {{ end }}
-          startupProbe:
-            httpGet:
-              path: /alive
-              port: {{ .Values.port }}
-            failureThreshold:  {{ .Values.startupProbe.failureThreshold }}
-            periodSeconds: {{ .Values.startupProbe.periodSeconds }}            
+            {{ end }}          
             {{ if .Values.retryPolicyExponentialBackoff}}
             - name: RETRY_POLICY_EXPONENTIAL_BACKOFF
               value: {{ .Values.retryPolicyExponentialBackoff | squote }}
@@ -171,6 +165,12 @@ spec:
             - name: RETRY_POLICY_MAX_RETRIES
               value: {{ .Values.retryPolicyMaxRetries | squote }}
             {{ end }}
+          startupProbe:
+            httpGet:
+              path: /alive
+              port: {{ .Values.port }}
+            failureThreshold:  {{ .Values.startupProbe.failureThreshold }}
+            periodSeconds: {{ .Values.startupProbe.periodSeconds }}
           livenessProbe:
             httpGet:
               path: /alive
@@ -200,4 +200,3 @@ spec:
   {{ end }}
 {{ end }}
 {{ end }}
-
