@@ -1,6 +1,6 @@
 # dafka-consumer
 
-![Version: 7.5.11](https://img.shields.io/badge/Version-7.5.11-informational?style=flat-square)
+![Version: 7.5.12](https://img.shields.io/badge/Version-7.5.12-informational?style=flat-square)
 
 A Helm Chart for Dafka Consumer
 
@@ -16,8 +16,10 @@ A Helm Chart for Dafka Consumer
 | image.name | string | `"osskit/dafka-consumer"` | the image name to use |
 | image.tag | string | `"7.6"` | the image tag to use |
 | logLevel | string | `"WARN"` | Allow to specify log level |
+| retryPolicyExponentialBackoff | string | `"50,30000,2"` |  |
 | target.baseUrl | string | `nil` | target base url |
 | target.port | int | `80` | target port |
+| target.useK8sServiceHostName | bool | `true` | use k8s service host name (without going through cluster DNS) |
 | target.healthcheck | string | `nil` | target healthcheck route |
 | target.topicsRoutes | {topic: string, route: string}[] | `nil` | mapping of topics to corresponding routes in target |
 | target.processingDelay | string | `nil` | adds delay before processing next record |
