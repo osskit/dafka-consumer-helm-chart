@@ -22,11 +22,15 @@ image:
 # -- Allow to specify log level
 logLevel: WARN
 
+retryPolicyExponentialBackoff: '50,30000,2'
+
 target:
   # -- target base url
   baseUrl:
   # -- target port
   port: 80
+  # -- use k8s service host name (without going through cluster DNS)
+  useK8sServiceHostName: true  
   # -- target healthcheck route
   healthcheck:
   # -- ({topic: string, route: string}[]) mapping of topics to corresponding routes in target
@@ -34,15 +38,19 @@ target:
   # -- adds delay before processing next record
   processingDelay:
 
+startupProbe:
+  failureThreshold: 10
+  periodSeconds: 30 
+
 livenessProbe:
-  initialDelaySeconds: 300
-  failureThreshold: 3
-  periodSeconds: 30
+  initialDelaySeconds: 10
+  failureThreshold: 2
+  periodSeconds: 5
 
 resources:
   requests:
     # -- cpu requests
-    cpu: 200m
+    cpu: 100m
     # -- memory requests
     memory: 100Mi
   limits:
