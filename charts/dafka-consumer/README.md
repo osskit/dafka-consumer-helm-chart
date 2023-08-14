@@ -16,8 +16,8 @@ A Helm Chart for Dafka Consumer
 | image.name | string | `"osskit/dafka-consumer"` | the image name to use |
 | image.tag | string | `"7.7"` | the image tag to use |
 | logLevel | string | `"WARN"` | Allow to specify log level |
-| retryPolicyExponentialBackoff | string | `"50,30000,2"` |  |
-| connectionFailureRetryPolicyExponentialBackoff | string | `"5000, 300000, 2"` |  |
+| retryPolicyExponentialBackoff | string | `"50,5000,2"` |  |
+| connectionFailureRetryPolicyExponentialBackoff | string | `"5000,300000,2"` |  |
 | target.baseUrl | string | `nil` | target base url |
 | target.port | int | `80` | target port |
 | target.useK8sServiceHostName | bool | `true` | use k8s service host name (without going through cluster DNS) |
