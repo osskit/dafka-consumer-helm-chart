@@ -22,9 +22,9 @@ image:
 # -- Allow to specify log level
 logLevel: WARN
 
-retryPolicyExponentialBackoff: 50,30000,2
+retryPolicyExponentialBackoff: 50,5000,2
 
-connectionFailureRetryPolicyExponentialBackoff: 5000, 300000, 2
+connectionFailureRetryPolicyExponentialBackoff: 5000,300000,2
 
 target:
   # -- target base url
