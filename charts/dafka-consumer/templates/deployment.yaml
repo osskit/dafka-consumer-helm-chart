@@ -157,13 +157,25 @@ spec:
               value: {{ .Values.connectionPool.keepAliveDurationMS  | squote }}
             {{ end }}
             {{ end }}          
-            {{ if .Values.retryPolicyExponentialBackoff}}
+            {{ if .Values.retryPolicyExponentialBackoff }}
             - name: RETRY_POLICY_EXPONENTIAL_BACKOFF
               value: {{ .Values.retryPolicyExponentialBackoff | squote }}
             {{ end }}
-            {{ if .Values.retryPolicyMaxRetries}}
+            {{ if .Values.connectionFailureRetryPolicyExponentialBackoff }}
+            - name: CONNECTION_FAILURE_RETRY_POLICY_EXPONENTIAL_BACKOFF
+              value: {{ .Values.connectionFailureRetryPolicyExponentialBackoff | squote }}
+            {{ end }}
+            {{ if .Values.retryPolicyMaxRetries }}
             - name: RETRY_POLICY_MAX_RETRIES
               value: {{ .Values.retryPolicyMaxRetries | squote }}
+            {{ end }}
+            {{ if .Values.connectionFailureRetryPolicyMaxRetries }}
+            - name: CONNECTION_FAILURE_RETRY_POLICY_MAX_RETRIES
+              value: {{ .Values.connectionFailureRetryPolicyMaxRetries | squote }}
+            {{ end }}
+            {{ if .Values.connectionFailureRetryPolicyMaxDurationMS }}
+            - name: CONNECTION_FAILURE_RETRY_POLICY_MAX_DURATION_MS
+              value: {{ .Values.connectionFailureRetryPolicyMaxDurationMS | squote }}
             {{ end }}
           startupProbe:
             httpGet:
