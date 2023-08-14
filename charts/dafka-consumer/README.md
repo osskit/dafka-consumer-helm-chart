@@ -1,6 +1,6 @@
 # dafka-consumer
 
-![Version: 7.5.13](https://img.shields.io/badge/Version-7.5.13-informational?style=flat-square)
+![Version: 7.6.0](https://img.shields.io/badge/Version-7.6.0-informational?style=flat-square)
 
 A Helm Chart for Dafka Consumer
 
@@ -14,9 +14,10 @@ A Helm Chart for Dafka Consumer
 | broker | string | `nil` | the url of the kafka broker |
 | replicaCount | int | `1` | pod count |
 | image.name | string | `"osskit/dafka-consumer"` | the image name to use |
-| image.tag | string | `"7.6"` | the image tag to use |
+| image.tag | string | `"7.7"` | the image tag to use |
 | logLevel | string | `"WARN"` | Allow to specify log level |
-| retryPolicyExponentialBackoff | string | `"50,30000,2"` |  |
+| retryPolicyExponentialBackoff | string | `"50,5000,2"` |  |
+| connectionFailureRetryPolicyExponentialBackoff | string | `"5000,300000,2"` |  |
 | target.baseUrl | string | `nil` | target base url |
 | target.port | int | `80` | target port |
 | target.useK8sServiceHostName | bool | `true` | use k8s service host name (without going through cluster DNS) |
