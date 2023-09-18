@@ -1,6 +1,6 @@
 # dafka-consumer
 
-![Version: 7.7.0](https://img.shields.io/badge/Version-7.7.0-informational?style=flat-square)
+![Version: 8.0.0](https://img.shields.io/badge/Version-8.0.0-informational?style=flat-square)
 
 A Helm Chart for Dafka Consumer
 
@@ -14,7 +14,7 @@ A Helm Chart for Dafka Consumer
 | broker | string | `nil` | the url of the kafka broker |
 | replicaCount | int | `1` | pod count |
 | image.name | string | `"osskit/dafka-consumer"` | the image name to use |
-| image.tag | string | `"7.8"` | the image tag to use |
+| image.tag | string | `"8.0"` | the image tag to use |
 | logLevel | string | `"WARN"` | Allow to specify log level |
 | retryPolicyExponentialBackoff | string | `"50,5000,2"` |  |
 | connectionFailureRetryPolicyExponentialBackoff | string | `"5000,300000,2"` |  |
