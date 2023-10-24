@@ -2,7 +2,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ .Release.Name }}-{{ .Values.name }}
+  name: {{ .Values.name | default .Release.Name }}
 spec:
   strategy:
     rollingUpdate:
@@ -10,11 +10,11 @@ spec:
   replicas: {{ .Values.replicaCount }}
   selector:
       matchLabels:
-        app: {{ .Release.Name }}-kafka-consumer
+        app: {{ .Values.name }}
   template:
     metadata:
       labels:
-        app: {{ .Release.Name }}-kafka-consumer
+        app: {{ .Values.name }}
         {{- range $key, $value := .Values.podLabels }}
         {{ $key }}: {{ $value | quote }}
         {{- end }}
@@ -27,7 +27,7 @@ spec:
     spec:
       serviceAccountName: {{ .Values.serviceAccountName }}
       containers:
-        - name: {{ .Release.Name }}-{{ .Values.name }}
+        - name: {{ .Values.name }}
           image: {{ .Values.image.name }}:{{ .Values.image.tag }}
           imagePullPolicy: Always
 {{ if .Values.auth.enabled }}
@@ -48,20 +48,20 @@ spec:
             - name: KAFKA_BROKER
               value: {{ .Values.broker }}
             - name: GROUP_ID
-              value: {{ .Values.groupId | default .Release.Name }}
+              value: {{ .Values.groupId | default .Values.name }}
             {{ if .Values.target.port }}
             - name: TARGET_PORT
               value: {{ .Values.target.port | squote }}
             {{ end }}
             {{ if .Values.target.useK8sServiceHostName }}
             - name: K8S_SERVICE_HOST_ENV_VAR
-              value: {{ printf "%s_SERVICE_HOST" (.Release.Name | upper | replace "-" "_") }}
+              value: {{ printf "%s_SERVICE_HOST" (.Values.name | upper | replace "-" "_") }}
             {{ else }}
             - name: TARGET_BASE_URL
-              value: {{ .Values.target.baseUrl | default (printf "http://%s" .Release.Name) }}:{{ .Values.target.port }}
+              value: {{ .Values.target.baseUrl | default (printf "http://%s" .Values.name) }}:{{ .Values.target.port }}
             {{ end }}
             - name: TOPICS_ROUTES
-              value: {{ range $index, $topicRoute := .Values.target.topicsRoutes }}{{- if eq $index 0}} {{- else}},{{- end}}{{ $topicRoute.topic }}:{{ $topicRoute.route }}{{- end}}
+              value: {{ range $index, $topicRoute := .Values.router }}{{- if eq $index 0}} {{- else}},{{- end}}{{ $topicRoute.topic }}:{{ $topicRoute.route }}{{- end}}
             {{- if .Values.target.healthcheck  }}
             - name: TARGET_HEALTHCHECK
               value: {{ .Values.target.healthcheck }}
@@ -126,7 +126,7 @@ spec:
             - name: SASL_PASSWORD
               valueFrom:
                 secretKeyRef:
-                  name: {{ .Release.Name }}-kafka-consumer
+                  name: {{ .Values.name }}
                   key: SASL_PASSWORD
             {{- else }}
             - name: SASL_PASSWORD_FILE_PATH
@@ -139,7 +139,7 @@ spec:
             - name: TRUSTSTORE_PASSWORD
               valueFrom:
                 secretKeyRef:
-                  name: {{ .Release.Name }}-kafka-consumer
+                  name: {{ .Values.name }}
                   key: TRUSTSTORE_PASSWORD
             {{- else }}
             - name: TRUSTSTORE_PASSWORD_FILE_PATH
@@ -207,7 +207,7 @@ spec:
               {{- if .Values.auth.secretProviderClassName }}
               secretProviderClass: {{ .Values.auth.secretProviderClassName }}
               {{- else }}
-              secretProviderClass: {{ .Release.Name }}-kafka-consumer
+              secretProviderClass: {{ .Values.name }}
               {{ end }}
   {{ end }}
 {{ end }}
