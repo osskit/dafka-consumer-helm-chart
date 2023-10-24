@@ -2,7 +2,7 @@
 apiVersion: monitoring.coreos.com/v1
 kind: PodMonitor
 metadata:
-  name: {{ .Release.Name }}-kafka-consumer
+  name: {{ .Values.name }}
   {{- if .Values.podMonitor.labels }}
   labels:
   {{ toYaml .Values.podMonitor.labels | nindent 4 }}
@@ -10,7 +10,7 @@ metadata:
 spec:
   selector:
     matchLabels:
-      app: {{ .Release.Name }}-kafka-consumer
+      app: {{ .Values.name }}
   podMetricsEndpoints:
   - port: main
 {{ if .Values.podMonitor.sampleLimit }}

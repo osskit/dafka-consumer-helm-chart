@@ -3,20 +3,20 @@
 apiVersion: keda.sh/v1alpha1
 kind: TriggerAuthentication
 metadata:
-  name: {{ .Release.Name }}-kafka-consumer
+  name: {{ .Values.name }}
 spec:
   secretTargetRef:
     - parameter: sasl
-      name: {{ .Release.Name }}-kafka-consumer-keda-secrets
+      name: {{ .Values.name }}-keda-secrets
       key: sasl
     - parameter: username
-      name: {{ .Release.Name }}-kafka-consumer-keda-secrets
+      name: {{ .Values.name }}-keda-secrets
       key: username
     - parameter: password
-      name: {{ .Release.Name }}-kafka-consumer
+      name: {{ .Values.name }}
       key: SASL_PASSWORD
     - parameter: tls
-      name: {{ .Release.Name }}-kafka-consumer-keda-secrets
+      name: {{ .Values.name }}-keda-secrets
       key: tls
     - parameter: ca
       name: {{ .Values.kedaScaledObject.authenticationRef.caSecretName }}

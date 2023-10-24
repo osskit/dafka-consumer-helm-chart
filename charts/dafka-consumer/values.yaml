@@ -2,7 +2,7 @@
 disable: false
 
 # -- name for this consumer
-name: kafka-consumer
+name:
 
 # -- the port to use
 port: &port 3000
@@ -26,6 +26,9 @@ retryPolicyExponentialBackoff: 50,5000,2
 
 connectionFailureRetryPolicyExponentialBackoff: 5000,300000,2
 
+# -- ({topic: string, route: string}[]) mapping of topics to corresponding routes in target
+router:
+
 target:
   # -- target base url
   baseUrl:
@@ -35,8 +38,6 @@ target:
   useK8sServiceHostName: true  
   # -- target healthcheck route
   healthcheck:
-  # -- ({topic: string, route: string}[]) mapping of topics to corresponding routes in target
-  topicsRoutes:
   # -- adds delay before processing next record
   processingDelay:
 
