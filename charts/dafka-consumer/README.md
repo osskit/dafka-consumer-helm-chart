@@ -1,6 +1,6 @@
 # dafka-consumer
 
-![Version: 8.0.0](https://img.shields.io/badge/Version-8.0.0-informational?style=flat-square)
+![Version: 9.0.0](https://img.shields.io/badge/Version-9.0.0-informational?style=flat-square)
 
 A Helm Chart for Dafka Consumer
 
@@ -9,7 +9,7 @@ A Helm Chart for Dafka Consumer
 | Key | Type | Default | Description |
 |-----|------|---------|-------------|
 | disable | bool | `false` | disable consumer. this remove the deployment and all the pods, useful when you need the consumer group to be inactive (i.e in order to reset offsets) |
-| name | string | `"kafka-consumer"` | name for this consumer |
+| name | string | `nil` | name for this consumer |
 | port | int | `3000` | the port to use |
 | broker | string | `nil` | the url of the kafka broker |
 | replicaCount | int | `1` | pod count |
@@ -18,11 +18,11 @@ A Helm Chart for Dafka Consumer
 | logLevel | string | `"WARN"` | Allow to specify log level |
 | retryPolicyExponentialBackoff | string | `"50,5000,2"` |  |
 | connectionFailureRetryPolicyExponentialBackoff | string | `"5000,300000,2"` |  |
+| router | {topic: string, route: string}[] | `nil` | mapping of topics to corresponding routes in target |
 | target.baseUrl | string | `nil` | target base url |
 | target.port | int | `80` | target port |
 | target.useK8sServiceHostName | bool | `true` | use k8s service host name (without going through cluster DNS) |
 | target.healthcheck | string | `nil` | target healthcheck route |
-| target.topicsRoutes | {topic: string, route: string}[] | `nil` | mapping of topics to corresponding routes in target |
 | target.processingDelay | string | `nil` | adds delay before processing next record |
 | startupProbe.failureThreshold | int | `10` |  |
 | startupProbe.periodSeconds | int | `30` |  |
