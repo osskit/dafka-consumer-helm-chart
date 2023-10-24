@@ -2,10 +2,10 @@
 apiVersion: keda.sh/v1alpha1
 kind: ScaledObject
 metadata:
-  name: {{ .Values.name }}
+  name: {{ .Values.name | default .Release.Name }}-kafka-consumer
 spec:
   scaleTargetRef:
-    name: {{ .Values.name }}
+    name: {{ .Values.name | default .Release.Name }}-kafka-consumer
   pollingInterval: 30
 {{- if .Values.kedaScaledObject.cooldownPeriod }}
   cooldownPeriod: {{ .Values.kedaScaledObject.cooldownPeriod }}  
@@ -20,7 +20,7 @@ spec:
   - type: kafka
     metadata:
       bootstrapServers: {{ $.Values.broker }}
-      consumerGroup: {{ $.Values.name }}
+      consumerGroup: {{ $.Values.name | default .Release.Name }}
       {{- if .Values.kedaScaledObject.topic }}      
       topic: {{ .Values.kedaScaledObject.topic }}
       {{- end}}
@@ -29,6 +29,6 @@ spec:
 {{- if .Values.kedaScaledObject.authenticationRef.name }}
       name: {{  .Values.kedaScaledObject.authenticationRef.name }}
 {{ else }}
-      name: {{ .Values.name }}
+      name: {{ .Values.name | default .Release.Name }}-kafka-consumer
 {{ end }}
 {{- end}}
