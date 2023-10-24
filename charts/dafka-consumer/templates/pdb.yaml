@@ -2,10 +2,10 @@
 apiVersion: policy/v1
 kind: PodDisruptionBudget
 metadata:
-  name: {{ .Values.name }}
+  name: {{ .Values.name | default .Release.Name }}-kafka-consumer
 spec:
   minAvailable: 1
   selector:
     matchLabels:
-      app: {{ .Values.name }}
+      app: {{ .Values.name | default .Release.Name }}-kafka-consumer
 {{ end }}
