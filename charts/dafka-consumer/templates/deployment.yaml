@@ -58,7 +58,7 @@ spec:
               value: {{ printf "%s_SERVICE_HOST" (.Values.name | default .Release.Name | upper | replace "-" "_") }}
             {{ else }}
             - name: TARGET_BASE_URL
-              value: {{ .Values.target.baseUrl | default (printf "http://%s" .Values.name) }}:{{ .Values.target.port }}
+              value: {{ .Values.target.baseUrl | default (printf "http://%s" .Values.name | default .Release.Name) }}:{{ .Values.target.port }}
             {{ end }}
             - name: TOPICS_ROUTES
               value: {{ range $index, $topicRoute := .Values.router }}{{- if eq $index 0}} {{- else}},{{- end}}{{ $topicRoute.topic }}:{{ $topicRoute.route }}{{- end}}
