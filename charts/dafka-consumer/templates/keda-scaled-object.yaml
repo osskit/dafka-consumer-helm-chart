@@ -20,7 +20,7 @@ spec:
   - type: kafka
     metadata:
       bootstrapServers: {{ $.Values.broker }}
-      consumerGroup: {{ $.Values.name | default .Release.Name }}
+      consumerGroup: {{ $.Values.groupId | default  $.Values.name | default .Release.Name }}
       {{- if .Values.kedaScaledObject.topic }}      
       topic: {{ .Values.kedaScaledObject.topic }}
       {{- end}}
