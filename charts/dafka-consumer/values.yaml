@@ -36,6 +36,8 @@ target:
   port: 80
   # -- use k8s service host name (without going through cluster DNS)
   useK8sServiceHostName: true  
+  # -- k8s service host name
+  k8sServiceHostName:
   # -- target healthcheck route
   healthcheck:
   # -- adds delay before processing next record
