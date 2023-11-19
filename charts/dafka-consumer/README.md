@@ -1,6 +1,6 @@
 # dafka-consumer
 
-![Version: 9.0.4](https://img.shields.io/badge/Version-9.0.4-informational?style=flat-square)
+![Version: 9.0.5](https://img.shields.io/badge/Version-9.0.5-informational?style=flat-square)
 
 A Helm Chart for Dafka Consumer
 
@@ -22,6 +22,7 @@ A Helm Chart for Dafka Consumer
 | target.baseUrl | string | `nil` | target base url |
 | target.port | int | `80` | target port |
 | target.useK8sServiceHostName | bool | `true` | use k8s service host name (without going through cluster DNS) |
+| target.k8sServiceHostName | string | `nil` | k8s service host name |
 | target.healthcheck | string | `nil` | target healthcheck route |
 | target.processingDelay | string | `nil` | adds delay before processing next record |
 | startupProbe.failureThreshold | int | `10` |  |
