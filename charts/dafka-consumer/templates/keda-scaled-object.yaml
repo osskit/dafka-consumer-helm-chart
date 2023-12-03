@@ -25,6 +25,15 @@ spec:
       topic: {{ .Values.kedaScaledObject.topic }}
       {{- end}}
       scaleToZeroOnInvalidOffset: {{ $.Values.kedaScaledObject.scaleToZeroOnInvalidOffset | squote }}
+      {{- if .Values.kedaScaledObject.lagThreshold }}      
+      lagThreshold: {{ $.Values.kedaScaledObject.lagThreshold | default 5 | squote }}
+      {{- end}}
+      {{- if .Values.kedaScaledObject.activationLagThreshold }}      
+      lagThreshold: {{ $.Values.kedaScaledObject.activationLagThreshold | default 1 | squote }}
+      {{- end}}
+      {{- if .Values.kedaScaledObject.excludePersistentLag }}      
+      excludePersistentLag: {{ $.Values.kedaScaledObject.excludePersistentLag | default true }}
+      {{- end}}       
     authenticationRef:
 {{- if .Values.kedaScaledObject.authenticationRef.name }}
       name: {{  .Values.kedaScaledObject.authenticationRef.name }}
