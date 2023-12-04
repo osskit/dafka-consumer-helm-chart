@@ -27,7 +27,7 @@ spec:
       scaleToZeroOnInvalidOffset: {{ $.Values.kedaScaledObject.scaleToZeroOnInvalidOffset | squote }}
       lagThreshold: {{ $.Values.kedaScaledObject.lagThreshold | default 5 | squote }}
       activationLagThreshold: {{ $.Values.kedaScaledObject.activationLagThreshold | default 1 | squote }}
-      excludePersistentLag: {{ $.Values.kedaScaledObject.excludePersistentLag | default true }}
+      excludePersistentLag: {{ $.Values.kedaScaledObject.excludePersistentLag | default true | squote }}
     authenticationRef:
 {{- if .Values.kedaScaledObject.authenticationRef.name }}
       name: {{  .Values.kedaScaledObject.authenticationRef.name }}
