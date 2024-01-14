@@ -1,0 +1,30 @@
+{{ if .Values.prometheusRule.enabled }}
+apiVersion: monitoring.coreos.com/v1
+kind: PrometheusRule
+metadata:
+  labels:
+    {{- with .Values.prometheusRule.labels }}
+    {{- toYaml . | nindent 4 }}
+    {{- end }}
+  name: {{ .Values.name | default .Release.Name }}-kafka-consumer
+spec:
+  groups:
+    - name: Ledge Global Rules
+      rules:
+{{ if .Values.prometheusRule.aivenDefaultRules.enabled }}
+        - alert: KafkaLag
+          expr: sum(kafka_consumer_group_rep_lag) by (name, topic) > {{ default .Values.prometheusRule.aivenDefaultRules.lagThreshold 100000 }}
+          for: {{ default .Values.prometheusRule.aivenDefaultRules.for "30m" }}
+          labels:
+            service: {{ .Release.Name }}
+            {{- with .Values.prometheusRule.aivenDefaultRules.labels }}
+            {{- toYaml . | nindent 12 }}
+            {{- end }}
+          annotations:
+            description: The consumer group {{`{{ $labels.name }}`}} has {{`{{ humanize $value }}`}} lag on topic {{`{{ $labels.topic }}`}} which is above threshold {{ default .Values.prometheusRule.aivenDefaultRules.lagThreshold 100000 }}.
+            summary: Kafka Consumer Lag gone above threshold
+            {{- with .Values.prometheusRule.aivenDefaultRules.annotations }}
+            {{- toYaml . | nindent 12 }}
+            {{- end }}
+{{ end }}
+{{ end }}

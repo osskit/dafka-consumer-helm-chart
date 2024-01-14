@@ -35,7 +35,7 @@ target:
   # -- target port
   port: 80
   # -- use k8s service host name (without going through cluster DNS)
-  useK8sServiceHostName: true  
+  useK8sServiceHostName: true
   # -- k8s service host name
   k8sServiceHostName:
   # -- target healthcheck route
@@ -45,7 +45,7 @@ target:
 
 startupProbe:
   failureThreshold: 10
-  periodSeconds: 30 
+  periodSeconds: 30
 
 livenessProbe:
   initialDelaySeconds: 10
@@ -137,3 +137,8 @@ pdb:
   enabled: false
 
 jvmOpts:
+
+prometheusRule:
+  enabled: false
+  aivenDefaultRules:
+    enabled: false
