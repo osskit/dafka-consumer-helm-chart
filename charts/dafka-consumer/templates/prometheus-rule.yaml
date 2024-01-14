@@ -9,7 +9,7 @@ metadata:
   name: {{ .Values.name | default .Release.Name }}-kafka-consumer
 spec:
   groups:
-    - name: Ledge Global Rules
+    - name: {{ .Values.name | default .Release.Name }} Dafka Consumer Rules
       rules:
 {{ if .Values.prometheusRule.aivenDefaultRules.enabled }}
         - alert: KafkaLag
