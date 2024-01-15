@@ -17,7 +17,7 @@ image:
   # -- the image name to use
   name: osskit/dafka-consumer
   # -- the image tag to use
-  tag: "11.0"
+  tag: "12.0"
 
 # -- Allow to specify log level
 logLevel: WARN
@@ -40,8 +40,6 @@ target:
   k8sServiceHostName:
   # -- target healthcheck route
   healthcheck:
-  # -- adds delay before processing next record
-  processingDelay:
 
 startupProbe:
   failureThreshold: 10
