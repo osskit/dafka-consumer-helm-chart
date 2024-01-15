@@ -13,7 +13,7 @@ spec:
       rules:
 {{ if .Values.prometheusRule.aivenDefaultRules.enabled }}
         - alert: KafkaLag
-          expr: sum(kafka_consumer_group_rep_lag) by (name, topic) > {{ default .Values.prometheusRule.aivenDefaultRules.lagThreshold 100000 }}
+          expr: sum(kafka_consumer_group_rep_lag{name="{{ .Values.groupId | default .Values.name | default .Release.Name }}"}) by (topic) > {{ default .Values.prometheusRule.aivenDefaultRules.lagThreshold 100000 }}
           for: {{ default .Values.prometheusRule.aivenDefaultRules.for "30m" }}
           labels:
             service: {{ .Release.Name }}
