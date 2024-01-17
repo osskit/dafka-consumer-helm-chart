@@ -24,6 +24,9 @@ logLevel: WARN
 
 retryPolicyExponentialBackoff: 50,5000,2
 
+# -- The assignment strategies list (comma separated list of: Range, RoundRobin, Sticky, CooperativeSticky)
+assignmentStrategy: RoundRobin
+
 connectionFailureRetryPolicyExponentialBackoff: 5000,300000,2
 
 # -- ({topic: string, route: string}[]) mapping of topics to corresponding routes in target
