@@ -49,6 +49,10 @@ spec:
             - name: KAFKA_LOG_LEVEL
               value: {{ .Values.kafkaLogLevel | squote }}
             {{ end  }}
+            {{ if .Values.assignmentStrategy }}
+            - name: ASSIGNMENT_STRATEGY
+              value: {{ .Values.assignmentStrategy | squote }}
+            {{ end  }}
             - name: KAFKA_BROKER
               value: {{ .Values.broker }}
             - name: GROUP_ID
