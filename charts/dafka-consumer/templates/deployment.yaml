@@ -45,6 +45,10 @@ spec:
             - name: JAVA_OPTS
               value: {{ .Values.jvmOpts | squote }}
             {{ end }}
+            {{ if .Values.kafkaLogLevel }}
+            - name: KAFKA_LOG_LEVEL
+              value: {{ .Values.kafkaLogLevel | squote }}
+            {{ end  }}
             - name: KAFKA_BROKER
               value: {{ .Values.broker }}
             - name: GROUP_ID
