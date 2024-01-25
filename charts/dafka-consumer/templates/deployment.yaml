@@ -5,6 +5,7 @@ metadata:
   name: {{ .Values.name | default .Release.Name }}-kafka-consumer
 spec:
   strategy:
+    type: {{ .Values.deploymentType | default "RollingUpdate" }}
     rollingUpdate:
       maxUnavailable: 0
   replicas: {{ .Values.replicaCount }}
