@@ -97,7 +97,7 @@ spec:
             {{- end }}
             {{- if .Values.targetProcessType }}
             - name: TARGET_PROCESS_TYPE
-              value: {{ .Values.targetProcessingType | squote }}
+              value: {{ .Values.targetProcessType | squote }}
             {{- end }}            
             {{- if .Values.sessionTimeoutMs }}
             - name: SESSION_TIMEOUT
