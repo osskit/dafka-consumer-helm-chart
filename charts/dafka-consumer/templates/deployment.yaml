@@ -87,30 +87,46 @@ spec:
               value: {{ .Values.metrics.enabled | squote }}
             - name: MONITORING_SERVER_PORT
               value: {{ .Values.port | squote }}
+            {{- if .Values.pollIntervalMs }}
+            - name: KAFKA_POLL_INTERVAL_MS
+              value: {{ .Values.pollIntervalMs | squote }}
+            {{- end }}                
             {{- if .Values.maxPollRecords }}
-            - name: MAX_POLL_RECORDS
+            - name: KAFKA_MAX_POLL_RECORDS
               value: {{ .Values.maxPollRecords | squote }}
+            {{- end }}
+            {{- if .Values.fetchMaxBytes }}
+            - name: KAFKA_FETCH_MAX_BYTES
+              value: {{ .Values.fetchMaxBytes | squote }}
+            {{- end }}
+            {{- if .Values.maxPartitionFetchBytes }}
+            - name: KAFKA_MAX_PARTITION_FETCH_BYTES
+              value: {{ .Values.maxPartitionFetchBytes | squote }}
+            {{- end }}
+            {{- if .Values.sessionTimeoutMs }}
+            - name: KAFKA_SESSION_TIMEOUT
+              value: {{ .Values.sessionTimeoutMs | squote }}
+            {{- end }}             
+            {{- if .Values.batchParallelismFactor }}
+            - name: BATCH_PARALLELISM_FACTOR
+              value: {{ .Values.batchParallelismFactor | squote }}
+            {{- end }}            
+            {{- if .Values.targetProcessType }}
+            - name: TARGET_PROCESS_TYPE
+              value: {{ .Values.targetProcessType | squote }}
+            {{- end }}
+            {{- if .Values.batchParallelismFactor }}
+            - name: BATCH_PARALLELISM_FACTOR
+              value: {{ .Values.batchParallelismFactor | squote }}
             {{- end }}
             {{- if .Values.targetTimeoutMs }}
             - name: TARGET_TIMEOUT_MS
               value: {{ .Values.targetTimeoutMs | squote }}
-            {{- end }}
-            {{- if .Values.targetProcessType }}
-            - name: TARGET_PROCESS_TYPE
-              value: {{ .Values.targetProcessType | squote }}
-            {{- end }}            
-            {{- if .Values.sessionTimeoutMs }}
-            - name: SESSION_TIMEOUT
-              value: {{ .Values.sessionTimeoutMs | squote }}
-            {{- end }}      
+            {{- end }}                        
             {{- if .Values.retryPolicyMaxDurationMs }}
             - name: RETRY_POLICY_MAX_DURATION_MS
               value: {{ .Values.retryPolicyMaxDurationMs | squote }}
-            {{- end }}    
-            {{- if .Values.kafkaPollIntervalMs }}
-            - name: KAFKA_POLL_INTERVAL_MS
-              value: {{ .Values.kafkaPollIntervalMs | squote }}
-            {{- end }}     
+            {{- end }}       
             - name: USE_SASL_AUTH
               value: {{ .Values.auth.enabled | squote }}
             - name: ROOT_LOG_LEVEL
