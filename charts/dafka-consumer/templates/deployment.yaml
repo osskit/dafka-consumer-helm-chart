@@ -126,7 +126,7 @@ spec:
             {{- if .Values.retryPolicyMaxDurationMs }}
             - name: RETRY_POLICY_MAX_DURATION_MS
               value: {{ .Values.retryPolicyMaxDurationMs | squote }}
-            {{- end }}       
+            {{- end }}
             - name: USE_SASL_AUTH
               value: {{ .Values.auth.enabled | squote }}
             - name: ROOT_LOG_LEVEL
