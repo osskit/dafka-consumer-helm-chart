@@ -122,7 +122,7 @@ spec:
             {{- if .Values.targetTimeoutMs }}
             - name: TARGET_TIMEOUT_MS
               value: {{ .Values.targetTimeoutMs | squote }}
-            {{- end }}                        
+            {{- end }}            
             {{- if .Values.retryPolicyMaxDurationMs }}
             - name: RETRY_POLICY_MAX_DURATION_MS
               value: {{ .Values.retryPolicyMaxDurationMs | squote }}
