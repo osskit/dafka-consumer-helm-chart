@@ -107,10 +107,6 @@ spec:
             - name: KAFKA_SESSION_TIMEOUT
               value: {{ .Values.sessionTimeoutMs | squote }}
             {{- end }}
-            {{- if .Values.batchParallelismFactor }}
-            - name: BATCH_PARALLELISM_FACTOR
-              value: {{ .Values.batchParallelismFactor | squote }}
-            {{- end }}
             {{- if .Values.targetProcessType }}
             - name: TARGET_PROCESS_TYPE
               value: {{ .Values.targetProcessType | squote }}
@@ -118,6 +114,10 @@ spec:
             {{- if .Values.batchParallelismFactor }}
             - name: BATCH_PARALLELISM_FACTOR
               value: {{ .Values.batchParallelismFactor | squote }}
+            {{- end }}
+            {{- if .Values.windowDuration }}
+            - name: WINDOW_DURATION
+              value: {{ .Values.windowDuration | squote }}
             {{- end }}
             {{- if .Values.targetTimeoutMs }}
             - name: TARGET_TIMEOUT_MS
