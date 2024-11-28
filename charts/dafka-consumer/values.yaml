@@ -13,7 +13,7 @@ broker:
 # -- pod count
 replicaCount: 1
 
-batchParallelismFactor: 10
+batchParallelismFactor: 1
 
 image:
   # -- the image name to use
