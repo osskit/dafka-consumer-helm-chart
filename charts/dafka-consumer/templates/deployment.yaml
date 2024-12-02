@@ -91,6 +91,10 @@ spec:
             - name: KAFKA_POLL_INTERVAL_MS
               value: {{ .Values.pollIntervalMs | squote }}
             {{- end }}
+            {{- if .Values.commitIntervalMs }}
+            - name: COMMIT_INTERVAL_MS
+              value: {{ .Values.commitIntervalMs | squote }}
+            {{- end }}            
             {{- if .Values.maxPollRecords }}
             - name: KAFKA_MAX_POLL_RECORDS
               value: {{ .Values.maxPollRecords | squote }}
