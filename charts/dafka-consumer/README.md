@@ -1,6 +1,6 @@
 # dafka-consumer
 
-![Version: 13.2.3](https://img.shields.io/badge/Version-13.2.3-informational?style=flat-square)
+![Version: 13.3.1](https://img.shields.io/badge/Version-13.3.1-informational?style=flat-square)
 
 A Helm Chart for Dafka Consumer
 
@@ -15,7 +15,7 @@ A Helm Chart for Dafka Consumer
 | replicaCount | int | `1` | pod count |
 | batchParallelismFactor | int | `1` |  |
 | image.name | string | `"osskit/dafka-consumer"` | the image name to use |
-| image.tag | string | `"13.2"` | the image tag to use |
+| image.tag | string | `"13.3"` | the image tag to use |
 | logLevel | string | `"WARN"` | Allow to specify log level |
 | retryPolicyExponentialBackoff | string | `"50,5000,2"` |  |
 | assignmentStrategy | string | `"CooperativeSticky"` | The assignment strategies list (comma separated list of: Range, RoundRobin, Sticky, CooperativeSticky) |
