@@ -65,6 +65,9 @@ resources:
     # -- memory limits
     memory: 400Mi
 
+# -- extra environment variables to set on the container, for example `KAFKA_PRODUCER_PROPERTY_MAX_REQUEST_SIZE: 12582912` to set the dead letter producer's `max.request.size`. Numbers and booleans are rendered as strings, so they can be written unquoted
+extraEnv:
+
 # -- labels to add to the pod metadata
 podLabels:
 
