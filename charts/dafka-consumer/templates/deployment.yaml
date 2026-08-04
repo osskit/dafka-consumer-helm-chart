@@ -99,13 +99,14 @@ spec:
             - name: KAFKA_MAX_POLL_RECORDS
               value: {{ .Values.maxPollRecords | squote }}
             {{- end }}
+            {{- /* int64 before squote: helm parses bare yaml numbers as float64, and squote alone renders 14680064 as 1.4680064e+07, which Integer.parseInt rejects so the consumer silently keeps the 1 MiB default */}}
             {{- if .Values.fetchMaxBytes }}
             - name: KAFKA_FETCH_MAX_BYTES
-              value: {{ .Values.fetchMaxBytes | squote }}
+              value: {{ .Values.fetchMaxBytes | int64 | squote }}
             {{- end }}
             {{- if .Values.maxPartitionFetchBytes }}
             - name: KAFKA_MAX_PARTITION_FETCH_BYTES
-              value: {{ .Values.maxPartitionFetchBytes | squote }}
+              value: {{ .Values.maxPartitionFetchBytes | int64 | squote }}
             {{- end }}
             {{- if .Values.sessionTimeoutMs }}
             - name: KAFKA_SESSION_TIMEOUT
@@ -200,6 +201,17 @@ spec:
             - name: CONNECTION_FAILURE_RETRY_POLICY_MAX_DURATION_MS
               value: {{ .Values.connectionFailureRetryPolicyMaxDurationMS | squote }}
             {{ end }}
+            {{- range $key, $value := .Values.extraEnv }}
+            - name: {{ $key }}
+              {{- if kindIs "invalid" $value }}
+              value: ""
+              {{- else if kindIs "string" $value }}
+              value: {{ $value | quote }}
+              {{- else }}
+              {{- /* helm parses bare yaml numbers as float64, so squote/quote alone would render 12582912 as 1.2582912e+07 */}}
+              value: {{ $value | toJson | quote }}
+              {{- end }}
+            {{- end }}
           startupProbe:
             httpGet:
               path: /alive

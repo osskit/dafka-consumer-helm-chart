@@ -1,6 +1,6 @@
 # dafka-consumer
 
-![Version: 13.3.1](https://img.shields.io/badge/Version-13.3.1-informational?style=flat-square)
+![Version: 13.4.0](https://img.shields.io/badge/Version-13.4.0-informational?style=flat-square)
 
 A Helm Chart for Dafka Consumer
 
@@ -34,6 +34,7 @@ A Helm Chart for Dafka Consumer
 | resources.requests.cpu | string | `"100m"` | cpu requests |
 | resources.requests.memory | string | `"100Mi"` | memory requests |
 | resources.limits.memory | string | `"400Mi"` | memory limits |
+| extraEnv | string | `nil` | extra environment variables to set on the container, for example `KAFKA_PRODUCER_PROPERTY_MAX_REQUEST_SIZE: 12582912` to set the dead letter producer's `max.request.size`. Numbers and booleans are rendered as strings, so they can be written unquoted |
 | podLabels | string | `nil` | labels to add to the pod metadata |
 | metrics.enabled | bool | `true` | should prometheus scrape this server |
 | metrics.path | string | `"/metrics"` | a path prometheus should scrape metrics from |
